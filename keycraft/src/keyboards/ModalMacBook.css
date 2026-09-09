@@ -137,7 +137,8 @@
   background: #333;
 }
 
-.key.tmux-prefix-key {
+.key.tmux-prefix-key,
+.key.vim-leader-key {
   background: #73521d;
   border: 2px solid #e7bd61;
   color: #fff4d9;
@@ -147,6 +148,8 @@
 .arrow-twin {
   float: left;
 }
+
+.key > .leader-key-badge { position: absolute; top: auto; left: 0; right: 0; bottom: 2px; padding: 0; text-align: center; color: #ffe0a0; font: 700 7px/1 sans-serif; letter-spacing: .4px; }
 .arrow-twin > * {
   margin-top: 0;
   float: unset;

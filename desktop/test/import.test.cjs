@@ -13,6 +13,7 @@ test("Vim import reads effective normal and insert maps from a controlled vimrc"
     const result = await importVim({ vimrc, executable: "/usr/bin/vim" });
     const data = JSON.parse(result.text);
     assert.equal(result.kind, "vim");
+    assert.equal(data.leader, "\\");
     assert.ok(data.mappings.some((m) => m.lhs === "<Space>w" && m.rhs === ":write<CR>" && m.mode === "n"));
     assert.ok(data.mappings.some((m) => m.lhs === "jk" && m.mode === "i"));
     const canonicalVimrc = await fs.realpath(vimrc);
@@ -62,5 +63,19 @@ test("default Vim startup reads HOME vimrc and mappings installed on VimEnter", 
     const data = JSON.parse(result.text);
     assert.ok(data.mappings.some((m) => m.lhs === "<F3>"));
     assert.ok(data.mappings.some((m) => m.lhs === "<F4>"));
+  } finally { await fs.rm(directory, { recursive: true, force: true }); }
+});
+
+test("Vim import records custom, special, multi-key and empty leader values", async () => {
+  const directory = await fs.mkdtemp(path.join(os.tmpdir(), "keycraft-leader-test-"));
+  const vimrc = path.join(directory, "vimrc");
+  try {
+    for (const [value, notation] of [["' '", "<Space>"], ["','", ","], ['"\\<C-a>"', "<C-A>"], ["'g '", "g<Space>"], ["'<CR>'", "<lt>CR>"], ["''", "\\"]]) {
+      await fs.writeFile(vimrc, `set nocompatible\nlet mapleader = ${value}\nnnoremap <Leader>w :write<CR>\n`);
+      const result = await importVim({ vimrc, executable: "/usr/bin/vim" });
+      const data = JSON.parse(result.text);
+      assert.equal(data.leader, notation);
+      assert.deepEqual(result.warnings, []);
+    }
   } finally { await fs.rm(directory, { recursive: true, force: true }); }
 });

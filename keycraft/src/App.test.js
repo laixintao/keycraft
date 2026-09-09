@@ -196,3 +196,55 @@ test('tmux import retains a configured prefix even when only root bindings are e
   expect(prefixPanel.getByText('This snapshot has no prefix-table bindings.')).toBeInTheDocument();
   expect(JSON.parse(localStorage.getItem('keycraft.workspace.v1')).profiles[0].tmuxPrefixes).toEqual(['C-z']);
 });
+
+test('text imports save the Vim leader, highlight it, and show completion after capture', async () => {
+  const mounted = workspaceUI();
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Import text or file' })).toBeEnabled());
+  fireEvent.click(screen.getByRole('button', { name: 'Import text or file' }));
+  fireEvent.change(screen.getByLabelText('Snapshot name'), { target: { value: 'Leader Vim' } });
+  fireEvent.change(screen.getByLabelText('Leader key (optional)'), { target: { value: '<Space>' } });
+  fireEvent.change(screen.getByLabelText('Exported mappings'), { target: { value: 'n  <Space>w    * :write<CR>' } });
+  fireEvent.click(screen.getByRole('button', { name: 'Save and explore →' }));
+  const panel = within(await screen.findByRole('region', { name: 'Vim leader' }));
+  expect(panel.getByText('Space')).toBeInTheDocument();
+  expect(screen.getByTitle('Vim leader key')).toHaveClass('key--space', 'vim-leader-key');
+  expect(JSON.parse(localStorage.getItem('keycraft.workspace.v1')).profiles[0].vimLeader).toBe('<Space>');
+  fireEvent.keyDown(window, { key: ' ', code: 'Space' });
+  expect(panel.getByText(/Leader received/)).toBeInTheDocument();
+  expect(screen.queryByTitle('Vim leader key')).not.toBeInTheDocument();
+  fireEvent.keyDown(window, { key: 'w', code: 'KeyW' });
+  expect(screen.getByRole('status')).toHaveTextContent('1 mappings');
+  fireEvent.keyDown(window, { key: 'Backspace', code: 'Backspace' });
+  expect(screen.getByTitle('Vim leader key')).toHaveClass('key--space');
+  fireEvent.click(screen.getByRole('button', { name: 'Keyboard capture on' }));
+  expect(screen.queryByTitle('Vim leader key')).not.toBeInTheDocument();
+  mounted.unmount();
+  workspaceUI('/snapshots/test-snapshot');
+  await screen.findByRole('heading', { name: 'Leader Vim' });
+  expect(screen.getByTitle('Vim leader key')).toHaveClass('key--space');
+});
+
+test('older Vim snapshots can set a leader without changing mappings and recover from failed saves', async () => {
+  const original = seedSnapshots();
+  const mounted = workspaceUI('/snapshots/private');
+  const panel = within(await screen.findByRole('region', { name: 'Vim leader' }));
+  expect(panel.getByText('Not recorded')).toBeInTheDocument();
+  expect(screen.queryByTitle('Vim leader key')).not.toBeInTheDocument();
+  fireEvent.click(panel.getByRole('button', { name: 'Set leader' }));
+  fireEvent.change(panel.getByLabelText('Leader key'), { target: { value: ',' } });
+  const write = jest.spyOn(Storage.prototype, 'setItem').mockImplementationOnce(() => { throw new Error('Disk unavailable'); });
+  fireEvent.click(panel.getByRole('button', { name: 'Save leader' }));
+  expect(await panel.findByRole('alert')).toHaveTextContent('Could not save leader: Disk unavailable');
+  expect(JSON.parse(localStorage.getItem('keycraft.workspace.v1'))).toEqual(original);
+  write.mockRestore();
+  fireEvent.click(panel.getByRole('button', { name: 'Save leader' }));
+  await panel.findByRole('button', { name: 'Edit leader' });
+  expect(screen.getByTitle('Vim leader key')).toHaveTextContent(',');
+  const saved = JSON.parse(localStorage.getItem('keycraft.workspace.v1'));
+  expect(saved.profiles[0]).toEqual({ ...original.profiles[0], vimLeader: ',' });
+  expect(saved.profiles[1]).toEqual(original.profiles[1]);
+  mounted.unmount();
+  workspaceUI('/snapshots/private');
+  await screen.findByRole('heading', { name: 'Private Vim' });
+  expect(screen.getByTitle('Vim leader key')).toHaveTextContent(',');
+});

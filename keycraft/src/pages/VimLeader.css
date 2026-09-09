@@ -1,0 +1,15 @@
+.vim-leader-panel { display: flex; align-items: center; gap: 18px; width: 94%; margin: 4px auto 10px; padding: 11px 16px; border: 1px solid #c5ad70; border-left: 4px solid #b98624; border-radius: 8px; background: #faf0d7; flex-shrink: 0; }
+.vim-leader-summary { display: flex; align-items: center; gap: 12px; }
+.vim-leader-label { color: #83602b; font-size: 10px; letter-spacing: 1px; font-weight: 700; white-space: nowrap; }
+.vim-leader-keycap { border: 1px solid #b38a3a; border-bottom-width: 3px; border-radius: 5px; background: #fffaf0; color: #684710; padding: 5px 10px; font: 700 14px Menlo, monospace; overflow-wrap: anywhere; }
+.vim-leader-message { flex: 1; margin: 0; color: #755b33; font-size: 12px; line-height: 1.5; }
+.vim-leader-unavailable { color: #94794d; font-size: 12px; white-space: nowrap; }
+.vim-leader-panel button { border: 1px solid #bda475; border-radius: 5px; background: #fffaf0; color: #684710; padding: 6px 10px; font-size: 11px; cursor: pointer; white-space: nowrap; }
+.vim-leader-panel button:disabled { opacity: .6; cursor: default; }
+.vim-leader-editor { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.vim-leader-editor label { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #755b33; }
+.vim-leader-editor input { width: 130px; border: 1px solid #bda475; border-radius: 4px; padding: 6px; background: #fff; }
+.vim-leader-editor [role="alert"] { width: 100%; color: #a03325; font-size: 12px; }
+.vim-leader-panel.leader-received { background: #edf4e6; border-color: #9ab486; border-left-color: #47733a; }
+.leader-received .vim-leader-keycap { background: #3c663a; color: #fff; border-color: #294c29; }
+@media (max-width: 800px) { .vim-leader-panel { flex-wrap: wrap; gap: 10px; } .vim-leader-message { min-width: 180px; } }

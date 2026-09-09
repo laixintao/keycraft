@@ -17,6 +17,7 @@ export default function Home() {
   const [raw, setRaw] = React.useState("");
   const [prefix, setPrefix] = React.useState("C-b");
   const [prefix2, setPrefix2] = React.useState("None");
+  const [leader, setLeader] = React.useState("");
   const [scope, setScope] = React.useState("all");
   const [query, setQuery] = React.useState("");
   const [deleteTarget, setDeleteTarget] = React.useState(null);
@@ -42,9 +43,9 @@ export default function Home() {
   };
 
   const saveImport = async (payload, label) => {
-    const { mappings, warnings } = parseImport(payload);
+    const { mappings, warnings, vimLeader } = parseImport(payload);
     const tmuxMetadata = payload.kind === "tmux" ? { tmuxPrefixes: [...new Set([payload.prefix ?? "C-b", payload.prefix2].filter((key) => key && key !== "None"))] } : {};
-    const profile = await addProfile({ name: label, kind: payload.kind, mappings, warnings, sourceLabel: payload.sourceLabel || "Text import", ...tmuxMetadata });
+    const profile = await addProfile({ name: label, kind: payload.kind, mappings, warnings, sourceLabel: payload.sourceLabel || "Text import", ...tmuxMetadata, ...(vimLeader ? { vimLeader } : {}) });
     navigate(`/snapshots/${profile.id}`);
   };
   const importFromApp = async (source) => {
@@ -57,7 +58,7 @@ export default function Home() {
   };
   const importText = async (event) => {
     event.preventDefault(); setBusy("text"); setError("");
-    try { await saveImport({ kind, text: raw, prefix, prefix2 }, name.trim() || `${kind} · Text import`); }
+    try { await saveImport({ kind, text: raw, prefix, prefix2, vimLeader: leader }, name.trim() || `${kind} · Text import`); }
     catch (e) { setError(e.message); }
     finally { setBusy(""); }
   };
@@ -118,6 +119,7 @@ export default function Home() {
           <div className="form-row"><label>Application<select value={kind} onChange={(e) => setKind(e.target.value)}><option value="vim">Vim</option><option value="tmux">tmux</option></select></label><label className="grow">Snapshot name<input value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. My everyday setup" /></label></div>
           {kind === "tmux" ? <><p>Paste <code>tmux list-keys</code> output. Set prefixes to match <code>tmux show-options -gv prefix</code> and <code>prefix2</code>.</p><div className="form-row"><label>Prefix<input value={prefix} required onChange={(e) => setPrefix(e.target.value)} /></label><label>Second prefix<input value={prefix2} onChange={(e) => setPrefix2(e.target.value)} /></label></div></> : <p>In Vim, run <code>:redir @+</code>, <code>:silent verbose map</code>, <code>:silent verbose map!</code>, then <code>:redir END</code>. Paste the result below. You can also export a text file with <code>:redir! &gt; mappings.txt</code>.</p>}
           <label>Exported mappings<textarea value={raw} onChange={(e) => setRaw(e.target.value)} required rows={8} spellCheck={false} /></label>
+          {kind === "vim" && <><label>Leader key (optional)<input value={leader} onChange={(e) => setLeader(e.target.value)} placeholder="e.g. <Space> or ," spellCheck={false} aria-describedby="vim-leader-help" /></label><small id="vim-leader-help">Enter your leader as a character or Vim key notation, such as &lt;Space&gt;.</small></>}
           <label className="file-label">Load text file<input type="file" accept=".txt,.log,text/plain" disabled={disabled} onChange={async (e) => { const file = e.target.files[0]; if (!file) return; try { if (file.size > 10 * 1024 * 1024) throw new Error("Please use an export smaller than 10 MB."); setRaw(await file.text()); } catch (err) { setError(err.message); } }} /></label>
         </div>
         <div className="import-form-footer"><button type="button" className="secondary-action" onClick={() => setPaste(false)}>Cancel</button><button type="submit" className="primary-action" disabled={disabled || !raw.trim()}>{busy === "text" ? "Saving…" : "Save and explore →"}</button></div>

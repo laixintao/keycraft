@@ -30,6 +30,8 @@ async function importVim(options = {}) {
       "set nomore",
       "function! s:ExportKeycraft() abort",
       "  let s:data = {'mappings': maplist(), 'scripts': getscriptinfo()}",
+      "  let s:leader = get(g:, 'mapleader', '\\')",
+      "  let s:data.leader = keytrans(empty(s:leader) ? '\\' : s:leader)",
       "  for mapping in s:data.mappings",
       "    let mapping.lhsNotation = keytrans(mapping.lhsraw)",
       "  endfor",

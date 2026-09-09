@@ -6,6 +6,7 @@ export default function KeyBoard({
   matchedKeyMappings,
   currentPressed,
   prefixKeys = [],
+  leaderKeys = [],
 }) {
   const groupedByKeys = matchedKeyMappings
     .filter((k) => k.nextExpect !== null && k.nextExpect !== undefined)
@@ -60,7 +61,7 @@ export default function KeyBoard({
   // 按下 shift 的时候切换 group 中显示的内容
   return (
     <div className="keyboard-container" style={style}>
-      <KeyBoardModalMacBook mappingsByKeys={groupedByKeys} prefixKeys={prefixKeys} />{" "}
+      <KeyBoardModalMacBook mappingsByKeys={groupedByKeys} prefixKeys={prefixKeys} leaderKeys={leaderKeys} />{" "}
     </div>
   );
 }
