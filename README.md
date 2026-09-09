@@ -1,5 +1,7 @@
 # keycraft
 
+![](./docs/keycraft.jpg)
+
 A macOS app for reviewing and exploring Vim and tmux shortcuts.
 
 - Import Vim mappings from your vimrc and plugins.
