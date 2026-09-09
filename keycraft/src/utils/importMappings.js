@@ -21,8 +21,7 @@ function maplistKeyNotation(mapping) {
   return printable ? raw.replace(/</g, "<lt>") : undefined;
 }
 
-export function parseVimMaplist(text) {
-  const data = JSON.parse(text);
+function vimMaplistMappings(data) {
   if (!Array.isArray(data.mappings) || !Array.isArray(data.scripts)) throw new Error("Invalid Vim export.");
   const scripts = Object.fromEntries(data.scripts.map((s) => [s.sid, s.name]));
   return data.mappings.map((m) => {
@@ -37,6 +36,10 @@ export function parseVimMaplist(text) {
       raw: `${m.mode || ""} ${m.lhs} ${m.rhs}`,
     });
   });
+}
+
+export function parseVimMaplist(text) {
+  return vimMaplistMappings(JSON.parse(text));
 }
 
 export function parseVimVerbose(text) {
@@ -149,6 +152,10 @@ export function parseTmuxList(text, prefix = "C-b", prefix2 = "None") {
 }
 
 export function parseImport(payload) {
-  if (payload.format === "vim-maplist") return { mappings: parseVimMaplist(payload.text), warnings: payload.warnings || [] };
-  return payload.kind === "tmux" ? parseTmuxList(payload.text, payload.prefix, payload.prefix2) : parseVimVerbose(payload.text);
+  if (payload.format === "vim-maplist") {
+    const data = JSON.parse(payload.text);
+    return { mappings: vimMaplistMappings(data), warnings: payload.warnings || [], vimLeader: typeof data.leader === "string" ? data.leader : undefined };
+  }
+  return payload.kind === "tmux" ? parseTmuxList(payload.text, payload.prefix, payload.prefix2)
+    : { ...parseVimVerbose(payload.text), vimLeader: payload.vimLeader || undefined };
 }

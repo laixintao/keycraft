@@ -11,6 +11,8 @@ import PressedKeys from "./PressedKeys";
 import KeyMappingDetail from "./KeyMappingDetail";
 import TmuxPrefix from "./TmuxPrefix";
 import { getTmuxPrefixes } from "../utils/tmuxPrefixes";
+import VimLeader from "./VimLeader";
+import { describeVimLeader, vimLeaderProgress } from "../utils/vimLeader";
 import "./DesignPage.css";
 import { displaySourceLabel } from "../utils/sourceLabel";
 
@@ -27,8 +29,10 @@ export default function DesignPage() {
 }
 
 export function MappingViewer({ profile }) {
+  const { setVimLeader, saving } = useWorkspace();
   const allKeyMaps = React.useMemo(() => parseVimKeyMappings(profile.kind === "vim" ? profile.mappings.concat(builtinMappings) : profile.mappings), [profile]);
   const prefixes = React.useMemo(() => profile.kind === "tmux" ? getTmuxPrefixes(profile) : [], [profile]);
+  const leader = React.useMemo(() => profile.kind === "vim" ? describeVimLeader(profile.vimLeader) : null, [profile]);
   const [currentPressed, setCurrentPressed] = React.useState(null);
   const [pressedEvents, setPressedEvents] = React.useState([]);
   const [captureKeys, setCaptureKeys] = React.useState(true);
@@ -73,13 +77,16 @@ export function MappingViewer({ profile }) {
   }, [allKeyMaps, sources, mode, searchKeywords, pressedEvents]);
 
   const clearKeys = (event) => { setPressedEvents([]); setCurrentPressed(null); event.currentTarget.blur(); };
+  const leaderProgress = vimLeaderProgress(leader, pressedEvents);
+  const saveLeader = async (value) => { await setVimLeader(profile.id, value); setPressedEvents([]); setCurrentPressed(null); };
   return <main className="design-page">
     <header className="review-header window-drag"><Link to="/">← Workspace</Link><div className="grow"><h1>{profile.name}</h1><p>{displaySourceLabel(profile.sourceLabel)}</p></div><Button active={captureKeys} onClick={(e) => { setCaptureKeys(!captureKeys); setCurrentPressed(null); e.currentTarget.blur(); }}>{captureKeys ? "Keyboard capture on" : "Keyboard capture off"}</Button></header>
     {profile.warnings?.length > 0 && <details className="import-warnings"><summary>Import notes ({profile.warnings.length}) — some mappings may be missing</summary><ul>{profile.warnings.map((warning, index) => <li key={index}>{warning}</li>)}</ul></details>}
     {profile.kind === "tmux" && <TmuxPrefix prefixes={prefixes} pressedEvents={pressedEvents} captureKeys={captureKeys} tableEnabled={mode.prefix} />}
+    {profile.kind === "vim" && profile.id !== "builtin" && <VimLeader leader={leader} received={leaderProgress.received} pressedEvents={pressedEvents} captureKeys={captureKeys} onSave={saveLeader} saving={saving} />}
     <PressedKeys pressed={pressedEvents} currentPressed={currentPressed} handleClearKey={clearKeys} />
     <MatchKeyMappingDisplay matchedKeyMappings={matched} sources={sources} setSources={setSources} mode={mode} setMode={setMode} searchKeywords={searchKeywords} setSearchKeywords={setSearchKeywords} setShowKeyMap={setShowKeyMap} />
-    <KeyBoard matchedKeyMappings={matched} currentPressed={currentPressed} prefixKeys={mode.prefix && pressedEvents.length === 0 ? prefixes.flatMap((prefix) => prefix.physicalKeys) : []} />
+    <KeyBoard matchedKeyMappings={matched} currentPressed={currentPressed} prefixKeys={mode.prefix && pressedEvents.length === 0 ? prefixes.flatMap((prefix) => prefix.physicalKeys) : []} leaderKeys={captureKeys ? leaderProgress.physicalKeys : []} />
     <KeyMappingDetail showKeyMap={showKeyMap} setShowKeyMap={setShowKeyMap} />
   </main>;
 }

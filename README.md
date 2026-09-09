@@ -17,6 +17,8 @@ Choose **All snapshots**, **Vim**, or **tmux** in the sidebar. Use **Filter snap
 
 Type a key sequence to narrow the results. For tmux's `prefix` table, enter your prefix first, release it, then type the command key. For copy-mode bindings, select their table and type the binding itself. Click a mapping to inspect its command and source.
 
+Vim imports record your configured leader key and highlight it in gold on the keyboard. After entering the leader, continue typing to explore its mappings; Backspace resets the sequence. Text imports have an optional **Leader key** field. For older snapshots, use **Set leader** in the explorer; **Edit leader** updates the saved highlight without changing your Vim configuration or mappings. Use a character such as `,` or notation such as `<Space>` or `<C-a>`.
+
 Press **Backspace** or click **Clear sequence** to reset the sequence. Text fields keep their usual editing behavior. Enter and Escape can be reviewed as bindings; turn off keyboard capture to use normal keyboard navigation. macOS may intercept reserved shortcuts before the app receives them.
 
 Use the trash button beside a snapshot to delete it, or **Clear all snapshots** below the list to remove the entire library, including snapshots hidden by filters. Both actions require confirmation. Deleting snapshots keeps your Vim and tmux configuration and the bundled reference intact.
@@ -48,6 +50,16 @@ npm run package:mac
 ```
 
 The output is `dist/desktop/keycraft-darwin-arm64/keycraft.app` on Apple Silicon, or `darwin-x64` on an Intel Mac. Open it directly or copy it to Applications. Node.js is only needed to build it.
+
+To build a DMG installer after installing the dependencies above:
+
+```sh
+make dmg
+```
+
+This rebuilds the app and creates `dist/desktop/keycraft-macos-arm64.dmg` on Apple Silicon, or `keycraft-macos-x64.dmg` on Intel. The architecture follows the Node.js process, including when running under Rosetta. Open the DMG and drag **keycraft.app** into **Applications** to install it.
+
+The script includes the app's license files, verifies the disk image, and cleans up temporary files. A previous DMG is replaced only after a successful build. You can also run `./scripts/build-dmg.sh` directly.
 
 The packaging script currently uses an ad-hoc signature. Public distribution requires Developer ID signing and notarization.
 

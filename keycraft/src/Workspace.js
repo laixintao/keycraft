@@ -39,7 +39,10 @@ export function WorkspaceProvider({ children }) {
   };
   const deleteProfile = (id) => updateWorkspace((current) => ({ ...current, profiles: current.profiles.filter((profile) => profile.id !== id) }));
   const clearProfiles = () => updateWorkspace(() => ({ version: 1, profiles: [] }));
-  return <WorkspaceContext.Provider value={{ workspace, error, saving, addProfile, deleteProfile, clearProfiles }}>{children}</WorkspaceContext.Provider>;
+  const setVimLeader = (id, vimLeader) => updateWorkspace((current) => ({ ...current,
+    profiles: current.profiles.map((profile) => profile.id === id && profile.kind === "vim" ? { ...profile, vimLeader } : profile),
+  }));
+  return <WorkspaceContext.Provider value={{ workspace, error, saving, addProfile, deleteProfile, clearProfiles, setVimLeader }}>{children}</WorkspaceContext.Provider>;
 }
 
 export const useWorkspace = () => React.useContext(WorkspaceContext);

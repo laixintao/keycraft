@@ -1,5 +1,6 @@
 import { tmuxKeyNotation } from "./importMappings";
 import { parseVimKeyMappings } from "./keyMatching";
+import { describeKeyPress } from "./keyDescription";
 
 export function mappingPrefix(mapping) {
   if (mapping.table !== "prefix") return null;
@@ -12,15 +13,7 @@ export function mappingPrefix(mapping) {
 export function describeKey(notation) {
   const key = parseVimKeyMappings([{ lhs: notation, rhs: "" }])[0]?.jsKeys[0];
   if (!key) return { notation, label: notation, physicalKeys: [] };
-  const names = { " ": "Space", ArrowLeft: "←", ArrowRight: "→", ArrowUp: "↑", ArrowDown: "↓", Escape: "Esc" };
-  const modifiers = [key.needControl && "Ctrl", key.needAlt && "Alt", key.needShift && "Shift", key.needMeta && "⌘"].filter(Boolean);
-  const label = [...modifiers, names[key.key] || (/^[a-z]$/i.test(key.key) ? key.key.toUpperCase() : key.key)].join(" + ");
-  const physicalKeys = [
-    key.needControl && "Control", key.needAlt && "Alt", key.needMeta && "Meta",
-    (key.needShift || /^[A-Z~!@#$%^&*()_+{}|:"<>?]$/.test(key.key)) && "Shift",
-    key.key === " " ? "Space" : key.key.length === 1 ? key.key.toLowerCase() : key.key,
-  ].filter(Boolean);
-  return { notation, label, key, physicalKeys };
+  return { notation, ...describeKeyPress(key) };
 }
 
 export function getTmuxPrefixes(profile) {

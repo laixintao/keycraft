@@ -2,12 +2,14 @@
 
 import "./ModalMacBook.css";
 import { useState, useContext, useLayoutEffect } from "react";
-import { CurrentMappingsContext, PrefixKeysContext } from "./CurrentMappingsContext";
+import { CurrentMappingsContext, PrefixKeysContext, LeaderKeysContext } from "./CurrentMappingsContext";
 
 const Key = ({ bindkeys, displayKey, styleClass }) => {
   const currentMappings = useContext(CurrentMappingsContext);
   const prefixKeys = useContext(PrefixKeysContext);
   const isPrefix = bindkeys.some((key) => prefixKeys.includes(key));
+  const leaderKeys = useContext(LeaderKeysContext);
+  const isLeader = bindkeys.some((key) => leaderKeys.includes(key));
   const displayMappings = bindkeys
     .map((b) => currentMappings[b])
     .filter(Boolean)
@@ -21,7 +23,7 @@ const Key = ({ bindkeys, displayKey, styleClass }) => {
   }
 
   return (
-    <div className={`${styleClass} ${activeClass} key${isPrefix ? " tmux-prefix-key" : ""}`} title={isPrefix ? "Part of the tmux prefix" : undefined}>
+    <div className={`${styleClass} ${activeClass} key${isPrefix ? " tmux-prefix-key" : ""}${isLeader ? " vim-leader-key" : ""}`} title={isLeader ? "Vim leader key" : isPrefix ? "Part of the tmux prefix" : undefined}>
       {displayKey.length > 1 ? (
         displayKey.map((k) => <div key={k}>{k}</div>)
       ) : (
@@ -31,12 +33,13 @@ const Key = ({ bindkeys, displayKey, styleClass }) => {
       {hasMappings && (
         <span className="matched-count">{displayMappings.length}</span>
       )}
+      {isLeader && <span className="leader-key-badge">LEADER</span>}
     </div>
   );
 };
 
 const keyboardFontSize = () => Math.min(window.innerWidth / 83, window.innerHeight / 68, 14) + "px";
-export default function ModalMacBook({ mappingsByKeys, prefixKeys = [] }) {
+export default function ModalMacBook({ mappingsByKeys, prefixKeys = [], leaderKeys = [] }) {
   const [fontSize, setFontSize] = useState(keyboardFontSize);
 
   useLayoutEffect(() => {
@@ -51,6 +54,7 @@ export default function ModalMacBook({ mappingsByKeys, prefixKeys = [] }) {
   return (
     // context: mappingsByKeys={mappingsByKeys}
     <PrefixKeysContext.Provider value={prefixKeys}>
+    <LeaderKeysContext.Provider value={leaderKeys}>
     <CurrentMappingsContext.Provider value={mappingsByKeys}>
       <div className="keyboard" style={{ fontSize: fontSize }}>
         <div className="keyboard__row keyboard__row--h1">
@@ -319,6 +323,7 @@ export default function ModalMacBook({ mappingsByKeys, prefixKeys = [] }) {
         </div>
       </div>
     </CurrentMappingsContext.Provider>
+    </LeaderKeysContext.Provider>
     </PrefixKeysContext.Provider>
   );
 }
