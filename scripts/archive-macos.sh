@@ -25,7 +25,8 @@ trap 'exit 143' TERM
 ditto -c -k --sequesterRsrc --keepParent "$app_dir" "$stage_dir/$archive.zip"
 ditto "$app_dir" "$stage_dir/contents"
 ln -s /Applications "$stage_dir/contents/Applications"
-hdiutil create -volname "keycraft $version" -srcfolder "$stage_dir/contents" \
+# Use HFS+ explicitly instead of the host's default APFS and its helper devices.
+hdiutil create -fs HFS+ -volname "keycraft $version" -srcfolder "$stage_dir/contents" \
   -format UDZO "$stage_dir/$archive.dmg"
 hdiutil verify "$stage_dir/$archive.dmg"
 for extension in zip dmg; do
