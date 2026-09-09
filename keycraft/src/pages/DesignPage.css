@@ -1,0 +1,14 @@
+.design-page { height: 100%; min-height: 0; display: flex; flex-direction: column; padding: 0 18px 12px; }
+.review-header { display: flex; align-items: center; gap: 24px; height: 70px; flex-shrink: 0; padding: 10px 20px; margin: 0 -18px 12px; border-bottom: 1px solid #dfe4d8; }
+.desktop-window .review-header { padding-left: 100px; }
+.review-header > a { color: #56704b; font-size: 12px; white-space: nowrap; }
+.review-header h1 { font-size: 15px; font-weight: 600; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.review-header p { font-size: 11px; margin: 4px 0 0; color: #89917d; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.review-header .bp4-button { background: #fff; box-shadow: none; border: 1px solid #d8ded2; border-radius: 5px; font-size: 12px; color: #5c6b54; }
+.review-header .bp4-button.bp4-active { background: #e5eddc; color: #48613c; border-color: #cbd9be; }
+.review-header .bp4-button:hover { background: #dce6d3; }
+.pressed-key-box { display: flex; width: 94%; justify-content: center; min-height: 44px; flex-shrink: 0; align-items: center; margin: 0 auto 12px; gap: 16px; }
+.pressed-keys-display { min-width: 250px; max-width: 80%; overflow-x: auto; white-space: nowrap; padding: 6px; }
+.sequence-hint { display: flex; gap: 12px; align-items: center; color: #89917f; font-size: 12px; }
+.sequence-hint kbd { font-size: 11px; font-family: inherit; padding: 3px 6px; border: 1px solid #d8dfd1; border-radius: 4px; color: #758169; background: #f0f3ec; }
+.import-warnings { padding: 8px 3%; color: #936438; font-size: 11px; max-height: 100px; overflow: auto; flex-shrink: 0; }

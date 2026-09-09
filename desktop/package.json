@@ -1,0 +1,21 @@
+{
+  "name": "keycraft",
+  "productName": "keycraft",
+  "version": "0.4.0",
+  "description": "Review and explore Vim and tmux shortcuts",
+  "author": "laixintao",
+  "license": "BSD-3-Clause",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "package:mac": "node package.cjs",
+    "test": "node --test test/*.test.cjs",
+    "test:app": "node test-app.cjs"
+  },
+  "devDependencies": {
+    "electron": "43.3.0",
+    "@electron/packager": "20.3.0",
+    "playwright-core": "1.58.2"
+  }
+}

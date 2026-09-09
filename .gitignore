@@ -1,0 +1,6 @@
+node_modules/
+/dist/
+/desktop/build/
+__pycache__/
+*.pyc
+.DS_Store

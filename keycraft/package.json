@@ -1,0 +1,42 @@
+{
+  "name": "keycraft-ui",
+  "version": "0.3.1",
+  "private": true,
+  "homepage": ".",
+  "dependencies": {
+    "@blueprintjs/core": "^4.15.0",
+    "@blueprintjs/popover2": "^1.12.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1",
+    "react-scripts": "5.0.1",
+    "string-width": "^4.2.3"
+  },
+  "scripts": {
+    "start": "PORT=3090 BROWSER=none CHOKIDAR_USEPOLLING=true WATCHPACK_POLLING=true react-scripts start",
+    "build": "INLINE_RUNTIME_CHUNK=false react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

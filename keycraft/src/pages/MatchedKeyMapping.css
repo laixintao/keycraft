@@ -1,0 +1,26 @@
+.key-mapping-container { width: 94%; margin: 0 auto; display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.key-mapping-card.bp4-card { font-family: Menlo, monospace; background: #fff; color: #3c4836; font-size: 12px; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; flex: 1; min-height: 0; padding: 8px 14px; border: 1px solid #d9ddcf; border-radius: 8px; box-shadow: none; }
+.one-key-mapping { display: grid; grid-template-columns: 64px 105px minmax(100px, 1fr) minmax(200px, 3fr) 14px; width: 100%; align-items: center; gap: 12px; padding: 9px 0; background: transparent; border: 0; border-bottom: 1px solid #eeeee5; text-align: left; color: inherit; }
+.one-key-mapping:hover { background: #eef2e4; }
+.settings-source-col { color: #899078; font-size: 10px; }
+.mapping-modes { display: flex; gap: 2px; flex-wrap: wrap; }
+.mapping-rhs, .one-key-mapping code { overflow-wrap: anywhere; }
+.mapping-detail-arrow { color: #97a285; }
+.mapping-count-info { margin-left: auto; color: #7f886f; font-size: 11px; white-space: nowrap; }
+.filter-row-box, .mode-filter-box { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 10px; }
+.filter-row-box .bp4-input-group { min-width: 280px; }
+.filter-row-box .bp4-input { border: 1px solid #d8ded2; border-radius: 6px; background: #fff; box-shadow: none; font-size: 12px; color: #354331; }
+.filter-row-box .bp4-input:focus { border-color: #6d8b60; box-shadow: 0 0 0 2px #6d8b601a; }
+.source-filter-box, .mode-filter-box { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; color: #7d886e; font-size: 11px; }
+.source-filter-box, .mode-filter-box { max-height: 80px; overflow: auto; flex-shrink: 0; }
+.source-filter-box { flex-shrink: 1; }
+.mode-filter-box { justify-content: flex-start; }
+.source-filter-box > span, .mode-filter-box > span:first-child { margin-right: 8px; }
+.filter-chip { border: 1px solid #d6ddca; background: transparent; border-radius: 4px; padding: 4px 8px; color: #8a947d; font-size: 11px; }
+.filter-chip.selected { background: #e2e9d8; color: #425b35; border-color: #c2cfb2; }
+.no-mappings-message { color: #7f886f; text-align: center; padding: 35px; }
+.tmux-mapping-keys { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.mapping-prefix-badge { display: inline-flex; flex-direction: column; gap: 3px; padding: 5px 8px; border: 1px solid #d4b979; border-radius: 5px; background: #faf0d7; color: #795013; }
+.mapping-prefix-badge small { font: 700 7px -apple-system, sans-serif; letter-spacing: 1px; }
+.mapping-prefix-badge kbd { font: 600 11px Menlo, monospace; white-space: nowrap; }
+.mapping-key-separator { color: #b08a42; }

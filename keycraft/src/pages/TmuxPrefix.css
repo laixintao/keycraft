@@ -1,0 +1,15 @@
+.tmux-prefix-panel { display: flex; align-items: center; gap: 18px; width: 94%; margin: 4px auto 10px; padding: 13px 18px; border: 1px solid #c5ad70; border-left: 4px solid #b98624; border-radius: 8px; background: #faf0d7; flex-shrink: 0; }
+.tmux-prefix-step { display: flex; align-items: center; gap: 12px; }
+.prefix-step-number { display: grid; place-items: center; width: 23px; height: 23px; border-radius: 50%; background: #e8d6ac; color: #795013; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+.prefix-step-label { display: block; color: #83602b; font-size: 9px; letter-spacing: 1.2px; font-weight: 700; margin-bottom: 7px; }
+.prefix-options { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.prefix-keycap { display: inline-block; border: 1px solid #b38a3a; border-bottom-width: 3px; border-radius: 5px; background: #fffaf0; color: #684710; padding: 6px 11px; font: 700 16px Menlo, monospace; white-space: nowrap; }
+.prefix-or, .prefix-unavailable { color: #94794d; font-size: 11px; }
+.prefix-then { font-size: 22px; color: #ac8d52; }
+.prefix-next-step { flex: 1; }
+.prefix-message { margin: 0; font-size: 12px; color: #755b33; line-height: 1.5; }
+.prefix-scope-note { font-size: 10px; color: #917c59; max-width: 135px; line-height: 1.5; }
+.prefix-ready { background: #edf4e6; border-color: #9ab486; border-left-color: #47733a; }
+.prefix-ready .prefix-step-number, .prefix-keycap-active { background: #3c663a; color: #fff; border-color: #294c29; }
+.prefix-ready .prefix-message, .prefix-ready .prefix-step-label { color: #3c663a; }
+@media (max-width: 1100px) { .tmux-prefix-panel { gap: 12px; padding: 11px 14px; } .prefix-scope-note { display: none; } }

@@ -1,0 +1,97 @@
+name: Test and build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  macos:
+    name: macOS (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x64
+    env:
+      CI: "true"
+      BUILD_ARCH: ${{ matrix.arch }}
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          architecture: ${{ matrix.arch }}
+          cache: npm
+          cache-dependency-path: desktop/package-lock.json
+
+      - name: Install Yarn Classic
+        run: npm install --global yarn@1.22.22 --force
+
+      - name: Install UI dependencies
+        run: yarn --cwd keycraft install --frozen-lockfile --ignore-optional --ignore-scripts --non-interactive
+
+      - name: Install app dependencies
+        run: npm --prefix desktop ci
+        env:
+          # Packaging downloads its own runtime; tests launch the packaged app.
+          ELECTRON_SKIP_BINARY_DOWNLOAD: "1"
+
+      - name: Run unit and UI tests
+        run: npm test
+
+      - name: Build macOS app
+        run: npm run package:mac
+
+      - name: Test packaged app
+        id: app-test
+        timeout-minutes: 10
+        run: npm --prefix desktop run test:app
+
+      - name: Verify app signature
+        run: codesign --verify --deep --strict "dist/desktop/keycraft-darwin-${BUILD_ARCH}/keycraft.app"
+
+      - name: Archive app and create checksum
+        working-directory: dist/desktop
+        run: |
+          # Archive before uploading to preserve executable bits and framework symlinks.
+          ditto -c -k --sequesterRsrc --keepParent "keycraft-darwin-${BUILD_ARCH}" "keycraft-macos-${BUILD_ARCH}.zip"
+          shasum -a 256 "keycraft-macos-${BUILD_ARCH}.zip" > "keycraft-macos-${BUILD_ARCH}.zip.sha256"
+
+      - name: Upload app
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: keycraft-macos-${{ matrix.arch }}
+          path: |
+            dist/desktop/keycraft-macos-${{ matrix.arch }}.zip
+            dist/desktop/keycraft-macos-${{ matrix.arch }}.zip.sha256
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+
+      - name: Upload test screenshots
+        if: ${{ always() && steps.app-test.outcome != 'skipped' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: test-screenshots-macos-${{ matrix.arch }}
+          path: dist/desktop/screenshots/
+          if-no-files-found: ignore
+          retention-days: 7

@@ -1,0 +1,1376 @@
+"cmd","attr","lhs","rhs","verbose","raw","tag","setting_source"
+i,,<C-@>,insert previously inserted text and stop insert,,|i_CTRL-@|	CTRL-@		insert previously inserted text and stop insert,i_CTRL-@,builtin
+i,,<C-a>,insert previously inserted text,,|i_CTRL-A|	CTRL-A		insert previously inserted text,i_CTRL-A,builtin
+i,,<C-b>,not used |i_CTRL-B-gone|,,		CTRL-B		not used |i_CTRL-B-gone|,,builtin
+i,,<C-c>,"quit insert mode, without checking for abbreviation, unless 'insertmode' set.",,"|i_CTRL-C|	CTRL-C		quit insert mode, without checking for abbreviation, unless 'insertmode' set.",i_CTRL-C,builtin
+i,,<C-d>,delete one shiftwidth of indent in the current line,,|i_CTRL-D|	CTRL-D		delete one shiftwidth of indent in the current line,i_CTRL-D,builtin
+i,,<C-e>,insert the character which is below the cursor,,|i_CTRL-E|	CTRL-E		insert the character which is below the cursor,i_CTRL-E,builtin
+i,,<C-f>,not used (but by default it's in 'cinkeys' to re-indent the current line),,		CTRL-F		not used (but by default it's in 'cinkeys' to re-indent the current line),,builtin
+i,,<C-g><C-j>,"line down, to column where inserting started",,"|i_CTRL-G_j|	CTRL-G CTRL-J	line down, to column where inserting started",i_CTRL-G_j,builtin
+i,,<C-g>j,"line down, to column where inserting started",,"|i_CTRL-G_j|	CTRL-G j	line down, to column where inserting started",i_CTRL-G_j,builtin
+i,,<C-g><Down>,"line down, to column where inserting started",,"|i_CTRL-G_j|	CTRL-G <Down>	line down, to column where inserting started",i_CTRL-G_j,builtin
+i,,<C-g><C-k>,"line up, to column where inserting started",,"|i_CTRL-G_k|	CTRL-G CTRL-K	line up, to column where inserting started",i_CTRL-G_k,builtin
+i,,<C-g>k,"line up, to column where inserting started",,"|i_CTRL-G_k|	CTRL-G k	line up, to column where inserting started",i_CTRL-G_k,builtin
+i,,<C-g><Up>,"line up, to column where inserting started",,"|i_CTRL-G_k|	CTRL-G <Up>	line up, to column where inserting started",i_CTRL-G_k,builtin
+i,,<C-g>u,start new undoable edit,,|i_CTRL-G_u|	CTRL-G u	start new undoable edit,i_CTRL-G_u,builtin
+i,,<C-g>U,don't break undo with next cursor movement,,|i_CTRL-G_U|	CTRL-G U	don't break undo with next cursor movement,i_CTRL-G_U,builtin
+i,,<BS>,delete character before the cursor,,|i_<BS>|	<BS>		delete character before the cursor,i_<BS>,builtin
+i,,<C-h>,same as <BS>,,|i_CTRL-H|	CTRL-H		same as <BS>,i_CTRL-H,builtin
+i,,<Tab>,insert a <Tab> character,,|i_<Tab>|	<Tab>		insert a <Tab> character,i_<Tab>,builtin
+i,,<C-i>,same as <Tab>,,|i_CTRL-I|	CTRL-I		same as <Tab>,i_CTRL-I,builtin
+i,,<NL>,same as <CR>,,|i_<NL>|	<NL>		same as <CR>,i_<NL>,builtin
+i,,<C-j>,same as <CR>,,|i_CTRL-J|	CTRL-J		same as <CR>,i_CTRL-J,builtin
+i,,<C-l>,when 'insertmode' set: Leave Insert mode,,|i_CTRL-L|	CTRL-L		when 'insertmode' set: Leave Insert mode,i_CTRL-L,builtin
+i,,<CR>,begin new line,,|i_<CR>|	<CR>		begin new line,i_<CR>,builtin
+i,,<C-m>,same as <CR>,,|i_CTRL-M|	CTRL-M		same as <CR>,i_CTRL-M,builtin
+i,,<C-n>,find next match for keyword in front of the cursor,,|i_CTRL-N|	CTRL-N		find next match for keyword in front of the cursor,i_CTRL-N,builtin
+i,,<C-o>,execute a single command and return to insert mode,,|i_CTRL-O|	CTRL-O		execute a single command and return to insert mode,i_CTRL-O,builtin
+i,,<C-p>,find previous match for keyword in front of the cursor,,|i_CTRL-P|	CTRL-P		find previous match for keyword in front of the cursor,i_CTRL-P,builtin
+i,,<C-q>,"same as CTRL-V, unless used for terminal control flow",,"|i_CTRL-Q|	CTRL-Q		same as CTRL-V, unless used for terminal control flow",i_CTRL-Q,builtin
+i,,<C-s>,not used or used for terminal control flow,,		CTRL-S		not used or used for terminal control flow,,builtin
+i,,<C-t>,insert one shiftwidth of indent in current line,,|i_CTRL-T|	CTRL-T		insert one shiftwidth of indent in current line,i_CTRL-T,builtin
+i,,<C-u>,delete all entered characters in the current line,,|i_CTRL-U|	CTRL-U		delete all entered characters in the current line,i_CTRL-U,builtin
+i,,<C-v>{char},insert next non-digit literally,,|i_CTRL-V|	CTRL-V {char}	insert next non-digit literally,i_CTRL-V,builtin
+i,,<C-w>,delete word before the cursor,,|i_CTRL-W|	CTRL-W		delete word before the cursor,i_CTRL-W,builtin
+i,,<C-x>{mode},"enter CTRL-X sub mode, see |i_CTRL-X_index|",,"|i_CTRL-X|	CTRL-X {mode}	enter CTRL-X sub mode, see |i_CTRL-X_index|",i_CTRL-X,builtin
+i,,<C-y>,insert the character which is above the cursor,,|i_CTRL-Y|	CTRL-Y		insert the character which is above the cursor,i_CTRL-Y,builtin
+i,,<C-z>,when 'insertmode' set: suspend Vim,,|i_CTRL-Z|	CTRL-Z		when 'insertmode' set: suspend Vim,i_CTRL-Z,builtin
+i,,<Esc>,end insert mode (unless 'insertmode' set),,|i_<Esc>|	<Esc>		end insert mode (unless 'insertmode' set),i_<Esc>,builtin
+i,,<C-[>,same as <Esc>,,|i_CTRL-[|	CTRL-[		same as <Esc>,i_CTRL-[,builtin
+i,,<C-]>,trigger abbreviation,,|i_CTRL-]|	CTRL-]		trigger abbreviation,i_CTRL-],builtin
+i,,<C-^>,toggle use of |:lmap| mappings,,|i_CTRL-^|	CTRL-^		toggle use of |:lmap| mappings,i_CTRL-^,builtin
+i,,<C-_>,"When 'allowrevins' set: change language (Hebrew, Farsi) {only when compiled with the |+rightleft| feature}",,"|i_CTRL-_|	CTRL-_		When 'allowrevins' set: change language (Hebrew, Farsi) {only when compiled with the |+rightleft| feature}",i_CTRL-_,builtin
+i,,0<C-d>,delete all indent in the current line,,|i_0_CTRL-D|	0 CTRL-D	delete all indent in the current line,i_0_CTRL-D,builtin
+i,,^<C-d>,"delete all indent in the current line, restore it in the next line",,"|i_^_CTRL-D|	^ CTRL-D	delete all indent in the current line, restore it in the next line",i_^_CTRL-D,builtin
+i,,<Del>,delete character under the cursor,,|i_<Del>|	<Del>		delete character under the cursor,i_<Del>,builtin
+i,,<Left>,cursor one character left,,|i_<Left>|	<Left>		cursor one character left,i_<Left>,builtin
+i,,<S-Left>,cursor one word left,,|i_<S-Left>|	<S-Left>	cursor one word left,i_<S-Left>,builtin
+i,,<C-Left>,cursor one word left,,|i_<C-Left>|	<C-Left>	cursor one word left,i_<C-Left>,builtin
+i,,<Right>,cursor one character right,,|i_<Right>|	<Right>		cursor one character right,i_<Right>,builtin
+i,,<S-Right>,cursor one word right,,|i_<S-Right>|	<S-Right>	cursor one word right,i_<S-Right>,builtin
+i,,<C-Right>,cursor one word right,,|i_<C-Right>|	<C-Right>	cursor one word right,i_<C-Right>,builtin
+i,,<Up>,cursor one line up,,|i_<Up>|	<Up>		cursor one line up,i_<Up>,builtin
+i,,<S-Up>,same as <PageUp>,,|i_<S-Up>|	<S-Up>		same as <PageUp>,i_<S-Up>,builtin
+i,,<Down>,cursor one line down,,|i_<Down>|	<Down>		cursor one line down,i_<Down>,builtin
+i,,<S-Down>,same as <PageDown>,,|i_<S-Down>|	<S-Down>	same as <PageDown>,i_<S-Down>,builtin
+i,,<Home>,cursor to start of line,,|i_<Home>|	<Home>		cursor to start of line,i_<Home>,builtin
+i,,<C-Home>,cursor to start of file,,|i_<C-Home>|	<C-Home>	cursor to start of file,i_<C-Home>,builtin
+i,,<End>,cursor past end of line,,|i_<End>|	<End>		cursor past end of line,i_<End>,builtin
+i,,<C-End>,cursor past end of file,,|i_<C-End>|	<C-End>		cursor past end of file,i_<C-End>,builtin
+i,,<PageUp>,one screenful backward,,|i_<PageUp>|	<PageUp>	one screenful backward,i_<PageUp>,builtin
+i,,<PageDown>,one screenful forward,,|i_<PageDown>|	<PageDown>	one screenful forward,i_<PageDown>,builtin
+i,,<F1>,same as <Help>,,|i_<F1>|	<F1>		same as <Help>,i_<F1>,builtin
+i,,<Help>,stop insert mode and display help window,,|i_<Help>|	<Help>		stop insert mode and display help window,i_<Help>,builtin
+i,,<Insert>,toggle Insert/Replace mode,,|i_<Insert>|	<Insert>	toggle Insert/Replace mode,i_<Insert>,builtin
+i,,<LeftMouse>,cursor at mouse click,,|i_<LeftMouse>|	<LeftMouse>	cursor at mouse click,i_<LeftMouse>,builtin
+i,,<ScrollWheelDown>,move window three lines down,,|i_<ScrollWheelDown>|	<ScrollWheelDown>	move window three lines down,i_<ScrollWheelDown>,builtin
+i,,<S-ScrollWheelDown>,move window one page down,,|i_<S-ScrollWheelDown>|	<S-ScrollWheelDown>	move window one page down,i_<S-ScrollWheelDown>,builtin
+i,,<ScrollWheelUp>,move window three lines up,,|i_<ScrollWheelUp>|	<ScrollWheelUp>		move window three lines up,i_<ScrollWheelUp>,builtin
+i,,<S-ScrollWheelUp>,move window one page up,,|i_<S-ScrollWheelUp>|	<S-ScrollWheelUp>	move window one page up,i_<S-ScrollWheelUp>,builtin
+i,,<ScrollWheelLeft>,move window six columns left,,|i_<ScrollWheelLeft>|	<ScrollWheelLeft>	move window six columns left,i_<ScrollWheelLeft>,builtin
+i,,<S-ScrollWheelLeft>,move window one page left,,|i_<S-ScrollWheelLeft>|	<S-ScrollWheelLeft>	move window one page left,i_<S-ScrollWheelLeft>,builtin
+i,,<ScrollWheelRight>,move window six columns right,,|i_<ScrollWheelRight>|	<ScrollWheelRight>	move window six columns right,i_<ScrollWheelRight>,builtin
+i,,<C-x><C-d>,complete defined identifiers,,|i_CTRL-X_CTRL-D|	CTRL-X CTRL-D	complete defined identifiers,i_CTRL-X_CTRL-D,builtin
+i,,<C-x><C-e>,scroll up,,|i_CTRL-X_CTRL-E|	CTRL-X CTRL-E	scroll up,i_CTRL-X_CTRL-E,builtin
+i,,<C-x><C-f>,complete file names,,|i_CTRL-X_CTRL-F|	CTRL-X CTRL-F	complete file names,i_CTRL-X_CTRL-F,builtin
+i,,<C-x><C-i>,complete identifiers,,|i_CTRL-X_CTRL-I|	CTRL-X CTRL-I	complete identifiers,i_CTRL-X_CTRL-I,builtin
+i,,<C-x><C-k>,complete identifiers from dictionary,,|i_CTRL-X_CTRL-K|	CTRL-X CTRL-K	complete identifiers from dictionary,i_CTRL-X_CTRL-K,builtin
+i,,<C-x><C-l>,complete whole lines,,|i_CTRL-X_CTRL-L|	CTRL-X CTRL-L	complete whole lines,i_CTRL-X_CTRL-L,builtin
+i,,<C-x><C-n>,next completion,,|i_CTRL-X_CTRL-N|	CTRL-X CTRL-N	next completion,i_CTRL-X_CTRL-N,builtin
+i,,<C-x><C-o>,omni completion,,|i_CTRL-X_CTRL-O|	CTRL-X CTRL-O	omni completion,i_CTRL-X_CTRL-O,builtin
+i,,<C-x><C-p>,previous completion,,|i_CTRL-X_CTRL-P|	CTRL-X CTRL-P	previous completion,i_CTRL-X_CTRL-P,builtin
+i,,<C-x><C-s>,spelling suggestions,,|i_CTRL-X_CTRL-S|	CTRL-X CTRL-S	spelling suggestions,i_CTRL-X_CTRL-S,builtin
+i,,<C-x><C-t>,complete identifiers from thesaurus,,|i_CTRL-X_CTRL-T|	CTRL-X CTRL-T	complete identifiers from thesaurus,i_CTRL-X_CTRL-T,builtin
+i,,<C-x><C-y>,scroll down,,|i_CTRL-X_CTRL-Y|	CTRL-X CTRL-Y	scroll down,i_CTRL-X_CTRL-Y,builtin
+i,,<C-x><C-u>,complete with 'completefunc',,|i_CTRL-X_CTRL-U|	CTRL-X CTRL-U	complete with 'completefunc',i_CTRL-X_CTRL-U,builtin
+i,,<C-x><C-v>,complete like in : command line,,|i_CTRL-X_CTRL-V|	CTRL-X CTRL-V	complete like in : command line,i_CTRL-X_CTRL-V,builtin
+i,,<C-x><C-z>,"stop completion, keeping the text as-is",,"|i_CTRL-X_CTRL-Z|	CTRL-X CTRL-Z	stop completion, keeping the text as-is",i_CTRL-X_CTRL-Z,builtin
+i,,<C-x><C-]>,complete tags,,|i_CTRL-X_CTRL-]|	CTRL-X CTRL-]	complete tags,i_CTRL-X_CTRL-],builtin
+i,,<C-x>s,spelling suggestions,,|i_CTRL-X_s|		CTRL-X s	spelling suggestions,i_CTRL-X_s,builtin
+i,,<C-l>,insert one character from the current match,,		CTRL-L		insert one character from the current match,,builtin
+i,,<CR>,insert currently selected match,,		<CR>		insert currently selected match,,builtin
+i,,<BS>,delete one character and redo search,,		<BS>		delete one character and redo search,,builtin
+i,,<C-h>,same as <BS>,,		CTRL-H		same as <BS>,,builtin
+i,,<Up>,select the previous match,,		<Up>		select the previous match,,builtin
+i,,<Down>,select the next match,,		<Down>		select the next match,,builtin
+i,,<PageUp>,select a match several entries back,,		<PageUp>	select a match several entries back,,builtin
+i,,<PageDown>,select a match several entries forward,,		<PageDown>	select a match several entries forward,,builtin
+i,,{char1}<BS>{char2},enter digraph (only when 'digraph' option set),,"|i_digraph|		{char1}<BS>{char2}	enter digraph (only when 'digraph' option set)
+",i_digraph,builtin
+i,,<C-k>{char1}{char2},enter digraph,,"|i_CTRL-K|	CTRL-K {char1} {char2}	enter digraph
+",i_CTRL-K,builtin
+i,,<C-s>HIFT-Q{char},like CTRL-Q unless |modifyOtherKeys| is active,,"|i_CTRL-SHIFT-Q|	  CTRL-SHIFT-Q {char}	like CTRL-Q unless |modifyOtherKeys| is active
+",i_CTRL-SHIFT-Q,builtin
+i,,<C-r>{register},insert the contents of a register,,"|i_CTRL-R|	CTRL-R {register}	insert the contents of a register
+",i_CTRL-R,builtin
+i,,<C-r><C-r>{register},insert the contents of a register literally,,"|i_CTRL-R_CTRL-R|	 CTRL-R CTRL-R {register}	insert the contents of a register literally
+",i_CTRL-R_CTRL-R,builtin
+i,,<C-r><C-o>{register},insert the contents of a register literally and don't auto-indent,,"|i_CTRL-R_CTRL-O|	 CTRL-R CTRL-O {register}	insert the contents of a register literally and don't auto-indent
+",i_CTRL-R_CTRL-O,builtin
+i,,<C-r><C-p>{register},insert the contents of a register literally and fix indent.,,"|i_CTRL-R_CTRL-P|	 CTRL-R CTRL-P {register}	insert the contents of a register literally and fix indent.
+",i_CTRL-R_CTRL-P,builtin
+i,,<C-\><C-n>,go to Normal mode,,"|i_CTRL-\_CTRL-N|	 CTRL-\ CTRL-N	go to Normal mode
+",i_CTRL-\_CTRL-N,builtin
+i,,<C-\><C-g>,go to mode specified with 'insertmode',,"|i_CTRL-\_CTRL-G|	 CTRL-\ CTRL-G	go to mode specified with 'insertmode'
+",i_CTRL-\_CTRL-G,builtin
+i,,<C-S-V>{char},like CTRL-V unless |modifyOtherKeys| is active,,"|i_CTRL-SHIFT-V|		 CTRL-SHIFT-V {char}	 like CTRL-V unless |modifyOtherKeys| is active
+",i_CTRL-SHIFT-V,builtin
+i,,<C-v>{number},insert three digit decimal number as a single byte.,,"|i_CTRL-V_digit|		CTRL-V {number}	insert three digit decimal number as a single byte.
+",i_CTRL-V_digit,builtin
+i,,<S-ScrollWheelRight>,move window one page right,,"|i_<S-ScrollWheelRight>|	<S-ScrollWheelRight>	move window one page right
+",i_<S-ScrollWheelRight>,builtin
+i,,<C-e>,stop completion and go back to original text,,"|complete_CTRL-E|			CTRL-E	stop completion and go back to original text
+",complete_CTRL-E,builtin
+i,,<C-y>,accept selected match and stop completion,,"|complete_CTRL-Y|			CTRL-Y	accept selected match and stop completion
+",complete_CTRL-Y,builtin
+n,,<C-a>,add N to number at/after cursor(can be undone/redone),,"|CTRL-A|	CTRL-A		2  add N to number at/after cursor
+",CTRL-A,builtin
+n,,<C-b>,scroll N screens Backwards(cursor movement command),,"|CTRL-B|	CTRL-B		1  scroll N screens Backwards
+",CTRL-B,builtin
+n,,<C-c>,interrupt current (search) command,,"|CTRL-C|	CTRL-C		   interrupt current (search) command
+",CTRL-C,builtin
+n,,<C-d>,scroll Down N lines (default: half a screen),,"|CTRL-D|	CTRL-D		   scroll Down N lines (default: half a screen)
+",CTRL-D,builtin
+n,,<C-e>,scroll N lines upwards (N lines Extra),,"|CTRL-E|	CTRL-E		   scroll N lines upwards (N lines Extra)
+",CTRL-E,builtin
+n,,<C-f>,scroll N screens Forward(cursor movement command),,"|CTRL-F|	CTRL-F		1  scroll N screens Forward
+",CTRL-F,builtin
+n,,<C-g>,display current file name and position,,"|CTRL-G|	CTRL-G		   display current file name and position
+",CTRL-G,builtin
+n,,<BS>,"same as ""h""(cursor movement command)",,"|<BS>|		<BS>		1  same as ""h""
+",<BS>,builtin
+n,,<C-h>,"same as ""h""(cursor movement command)",,"|CTRL-H|	CTRL-H		1  same as ""h""
+",CTRL-H,builtin
+n,,<Tab>,go to N newer entry in jump list(cursor movement command),,"|<Tab>|		<Tab>		1  go to N newer entry in jump list
+",<Tab>,builtin
+n,,<C-i>,same as <Tab>(cursor movement command),,"|CTRL-I|	CTRL-I		1  same as <Tab>
+",CTRL-I,builtin
+n,,<NL>,"same as ""j""(cursor movement command)",,"|<NL>|		<NL>		1  same as ""j""
+",<NL>,builtin
+n,,<C-j>,"same as ""j""(cursor movement command)",,"|CTRL-J|	CTRL-J		1  same as ""j""
+",CTRL-J,builtin
+n,,<C-l>,redraw screen,,"|CTRL-L|	CTRL-L		   redraw screen
+",CTRL-L,builtin
+n,,<CR>,cursor to the first CHAR N lines lower(cursor movement command),,"|<CR>|		<CR>		1  cursor to the first CHAR N lines lower
+",<CR>,builtin
+n,,<C-m>,same as <CR>(cursor movement command),,"|CTRL-M|	CTRL-M		1  same as <CR>
+",CTRL-M,builtin
+n,,<C-n>,"same as ""j""(cursor movement command)",,"|CTRL-N|	CTRL-N		1  same as ""j""
+",CTRL-N,builtin
+n,,<C-o>,go to N older entry in jump list(cursor movement command),,"|CTRL-O|	CTRL-O		1  go to N older entry in jump list
+",CTRL-O,builtin
+n,,<C-p>,"same as ""k""(cursor movement command)",,"|CTRL-P|	CTRL-P		1  same as ""k""
+",CTRL-P,builtin
+n,,<C-q>,"not used, or used for terminal control flow",,"		CTRL-Q		   not used, or used for terminal control flow
+",,builtin
+n,,<C-r>,redo changes which were undone with 'u'(can be undone/redone),,"|CTRL-R|	CTRL-R		2  redo changes which were undone with 'u'
+",CTRL-R,builtin
+n,,<C-s>,"not used, or used for terminal control flow",,"		CTRL-S		   not used, or used for terminal control flow
+",,builtin
+n,,<C-t>,jump to N older Tag in tag list,,"|CTRL-T|	CTRL-T		   jump to N older Tag in tag list
+",CTRL-T,builtin
+n,,<C-u>,scroll N lines Upwards (default: half a screen),,"|CTRL-U|	CTRL-U		   scroll N lines Upwards (default: half a screen)
+",CTRL-U,builtin
+n,,<C-v>,start blockwise Visual mode,,"|CTRL-V|	CTRL-V		   start blockwise Visual mode
+",CTRL-V,builtin
+n,,<C-w>{char},"window commands, see |CTRL-W|",,"|CTRL-W|	CTRL-W {char}	   window commands, see |CTRL-W|
+",CTRL-W,builtin
+n,,<C-x>,subtract N from number at/after cursor(can be undone/redone),,"|CTRL-X|	CTRL-X		2  subtract N from number at/after cursor
+",CTRL-X,builtin
+n,,<C-y>,scroll N lines downwards,,"|CTRL-Y|	CTRL-Y		   scroll N lines downwards
+",CTRL-Y,builtin
+n,,<C-z>,suspend program (or start new shell),,"|CTRL-Z|	CTRL-Z		   suspend program (or start new shell)
+",CTRL-Z,builtin
+n,,<C-[><Esc>,not used,,"		CTRL-[ <Esc>	   not used
+",,builtin
+n,,<C-\><C-n>,go to Normal mode (no-op),,"|CTRL-\_CTRL-N|	CTRL-\ CTRL-N	   go to Normal mode (no-op)
+",CTRL-\_CTRL-N,builtin
+n,,<C-\><C-g>,go to mode specified with 'insertmode',,"|CTRL-\_CTRL-G|	CTRL-\ CTRL-G	   go to mode specified with 'insertmode'
+",CTRL-\_CTRL-G,builtin
+n,,<C-]>,:ta to ident under cursor,,"|CTRL-]|	CTRL-]		   :ta to ident under cursor
+",CTRL-],builtin
+n,,<C-^>,"edit Nth alternate file (equivalent to "":e #N"")",,"|CTRL-^|	CTRL-^		   edit Nth alternate file (equivalent to "":e #N"")
+",CTRL-^,builtin
+n,,<Space>,"same as ""l""(cursor movement command)",,"|<Space>|	<Space>		1  same as ""l""
+",<Space>,builtin
+n,,!,filter Nmove text through the {filter} command(can be undone/redone),,				2  filter Nmove text through the {filter} command,,builtin
+n,,!!{filter},filter N lines through the {filter} command(can be undone/redone),,|!!|		!!{filter}	2  filter N lines through the {filter} command,!!,builtin
+n,,"""{register}","use {register} for next delete, yank or put ({.%#:} only work with put)",,"|quote|		""{register}  	   use {register} for next delete, yank or put ({.%#:} only work with put)
+",quote,builtin
+n,,#,search backward for the Nth occurrence of the ident under the cursor(cursor movement command),,"|#|		#		1  search backward for the Nth occurrence of the ident under the cursor
+",#,builtin
+n,,$,cursor to the end of Nth next line(cursor movement command),,"|$|		$		1  cursor to the end of Nth next line
+",$,builtin
+n,,%,"find the next (curly/square) bracket on this line and go to its match, or go to matching comment bracket, or go to matching preprocessor directive.(cursor movement command)",,"|%|		%		1  find the next (curly/square) bracket on this line and go to its match, or go to matching comment bracket, or go to matching preprocessor directive.
+",%,builtin
+n,,{count}%,go to N percentage in the file(cursor movement command),,"|N%|		{count}%	1  go to N percentage in the file
+",N%,builtin
+n,,&,repeat last :s(can be undone/redone),,"|&|		&		2  repeat last :s
+",&,builtin
+n,,'{a-zA-Z0-9},cursor to the first CHAR on the line with mark {a-zA-Z0-9}(cursor movement command),,"|'|		'{a-zA-Z0-9}	1  cursor to the first CHAR on the line with mark {a-zA-Z0-9}
+",',builtin
+n,,'',cursor to the first CHAR of the line where the cursor was before the latest jump.(cursor movement command),,"|''|		''		1  cursor to the first CHAR of the line where the cursor was before the latest jump.
+",'',builtin
+n,,'(,cursor to the first CHAR on the line of the start of the current sentence(cursor movement command),,"|'(|		'(		1  cursor to the first CHAR on the line of the start of the current sentence
+",'(,builtin
+n,,'),cursor to the first CHAR on the line of the end of the current sentence(cursor movement command),,"|')|		')		1  cursor to the first CHAR on the line of the end of the current sentence
+",'),builtin
+n,,'<,cursor to the first CHAR of the line where highlighted area starts/started in the current buffer.(cursor movement command),,"|'<|		'<		1  cursor to the first CHAR of the line where highlighted area starts/started in the current buffer.
+",'<,builtin
+n,,'>,cursor to the first CHAR of the line where highlighted area ends/ended in the current buffer.(cursor movement command),,"|'>|		'>		1  cursor to the first CHAR of the line where highlighted area ends/ended in the current buffer.
+",'>,builtin
+n,,'[,cursor to the first CHAR on the line of the start of last operated text or start of put text(cursor movement command),,"|'[|		'[		1  cursor to the first CHAR on the line of the start of last operated text or start of put text
+",'[,builtin
+n,,'],cursor to the first CHAR on the line of the end of last operated text or end of put text(cursor movement command),,"|']|		']		1  cursor to the first CHAR on the line of the end of last operated text or end of put text
+",'],builtin
+n,,'{,cursor to the first CHAR on the line of the start of the current paragraph(cursor movement command),,"|'{|		'{		1  cursor to the first CHAR on the line of the start of the current paragraph
+",'{,builtin
+n,,'},cursor to the first CHAR on the line of the end of the current paragraph(cursor movement command),,"|'}|		'}		1  cursor to the first CHAR on the line of the end of the current paragraph
+",'},builtin
+n,,(,cursor N sentences backward(cursor movement command),,"|(|		(		1  cursor N sentences backward
+",(,builtin
+n,,),cursor N sentences forward(cursor movement command),,"|)|		)		1  cursor N sentences forward
+",),builtin
+n,,*,search forward for the Nth occurrence of the ident under the cursor(cursor movement command),,"|star|		*		1  search forward for the Nth occurrence of the ident under the cursor
+",star,builtin
+n,,+,same as <CR>(cursor movement command),,"|+|		+		1  same as <CR>
+",+,builtin
+n,,",","repeat latest f, t, F or T in opposite direction N times(cursor movement command)",,"|,|		,		1  repeat latest f, t, F or T in opposite direction N times
+",",",builtin
+n,,-,cursor to the first CHAR N lines higher(cursor movement command),,"|-|		-		1  cursor to the first CHAR N lines higher
+",-,builtin
+n,,.,repeat last change with count replaced with N(can be undone/redone),,"|.|		.		2  repeat last change with count replaced with N
+",.,builtin
+n,,/{pattern}<CR>,search forward for the Nth occurrence of {pattern}(cursor movement command),,"|/|		/{pattern}<CR>	1  search forward for the Nth occurrence of {pattern}
+",/,builtin
+n,,/<CR>,search forward for {pattern} of last search(cursor movement command),,"|/<CR>|		/<CR>		1  search forward for {pattern} of last search
+",/<CR>,builtin
+n,,0,cursor to the first char of the line(cursor movement command),,"|0|		0		1  cursor to the first char of the line
+",0,builtin
+n,,1,prepend to command to give a count,,"|count|		1		   prepend to command to give a count
+",count,builtin
+n,,2,prepend to command to give a count,,"|count|		2			""
+",count,builtin
+n,,3,prepend to command to give a count,,"|count|		3			""
+",count,builtin
+n,,4,prepend to command to give a count,,"|count|		4			""
+",count,builtin
+n,,5,prepend to command to give a count,,"|count|		5			""
+",count,builtin
+n,,6,prepend to command to give a count,,"|count|		6			""
+",count,builtin
+n,,7,prepend to command to give a count,,"|count|		7			""
+",count,builtin
+n,,8,prepend to command to give a count,,"|count|		8			""
+",count,builtin
+n,,9,prepend to command to give a count,,"|count|		9			""
+",count,builtin
+n,,:,start entering an Ex command(cursor movement command),,"|:|		:		1  start entering an Ex command
+",:,builtin
+n,,{count}:,start entering an Ex command with range from current line to N-1 lines down,,"|N:|		{count}:	   start entering an Ex command with range from current line to N-1 lines down
+",N:,builtin
+n,,;,"repeat latest f, t, F or T N times(cursor movement command)",,"|;|		;		1  repeat latest f, t, F or T N times
+",;,builtin
+n,,<{motion},shift Nmove lines one 'shiftwidth' leftwards(can be undone/redone),,"|<|		<{motion}	2  shift Nmove lines one 'shiftwidth' leftwards
+",<,builtin
+n,,<<,shift N lines one 'shiftwidth' leftwards(can be undone/redone),,"|<<|		<<		2  shift N lines one 'shiftwidth' leftwards
+",<<,builtin
+n,,={motion},"filter Nmove lines through ""indent""(can be undone/redone)",,"|=|		={motion}	2  filter Nmove lines through ""indent""
+",=,builtin
+n,,==,"filter N lines through ""indent""(can be undone/redone)",,"|==|		==		2  filter N lines through ""indent""
+",==,builtin
+n,,>{motion},shift Nmove lines one 'shiftwidth' rightwards(can be undone/redone),,"|>|		>{motion}	2  shift Nmove lines one 'shiftwidth' rightwards
+",>,builtin
+n,,>>,shift N lines one 'shiftwidth' rightwards(can be undone/redone),,"|>>|		>>		2  shift N lines one 'shiftwidth' rightwards
+",>>,builtin
+n,,?{pattern}<CR>,search backward for the Nth previous occurrence of {pattern}(cursor movement command),,"|?|		?{pattern}<CR>	1  search backward for the Nth previous occurrence of {pattern}
+",?,builtin
+n,,?<CR>,search backward for {pattern} of last search(cursor movement command),,"|?<CR>|		?<CR>		1  search backward for {pattern} of last search
+",?<CR>,builtin
+n,,@{a-z},execute the contents of register {a-z} N times(can be undone/redone),,"|@|		@{a-z}		2  execute the contents of register {a-z} N times
+",@,builtin
+n,,@:,"repeat the previous "":"" command N times",,"|@:|		@:		   repeat the previous "":"" command N times
+",@:,builtin
+n,,@@,repeat the previous @{a-z} N times(can be undone/redone),,"|@@|		@@		2  repeat the previous @{a-z} N times
+",@@,builtin
+n,,A,append text after the end of the line N times(can be undone/redone),,"|A|		A		2  append text after the end of the line N times
+",A,builtin
+n,,B,cursor N WORDS backward(cursor movement command),,"|B|		B		1  cursor N WORDS backward
+",B,builtin
+n,,"{""+register}C","change from the cursor position to the end of the line, and N-1 more lines [into register x]; synonym for ""c$""(can be undone/redone)",,"|C|		[""x]C		2  change from the cursor position to the end of the line, and N-1 more lines [into register x]; synonym for ""c$""
+",C,builtin
+n,,"{""+register}D","delete the characters under the cursor until the end of the line and N-1 more lines [into register x]; synonym for ""d$""(can be undone/redone)",,"|D|		[""x]D		2  delete the characters under the cursor until the end of the line and N-1 more lines [into register x]; synonym for ""d$""
+",D,builtin
+n,,E,cursor forward to the end of WORD N(cursor movement command),,"|E|		E		1  cursor forward to the end of WORD N
+",E,builtin
+n,,F{char},cursor to the Nth occurrence of {char} to the left(cursor movement command),,"|F|		F{char}		1  cursor to the Nth occurrence of {char} to the left
+",F,builtin
+n,,G,"cursor to line N, default last line(cursor movement command)",,"|G|		G		1  cursor to line N, default last line
+",G,builtin
+n,,H,cursor to line N from top of screen(cursor movement command),,"|H|		H		1  cursor to line N from top of screen
+",H,builtin
+n,,I,insert text before the first CHAR on the line N times(can be undone/redone),,"|I|		I		2  insert text before the first CHAR on the line N times
+",I,builtin
+n,,J,Join N lines; default is 2(can be undone/redone),,"|J|		J		2  Join N lines; default is 2
+",J,builtin
+n,,K,lookup Keyword under the cursor with 'keywordprg',,"|K|		K		   lookup Keyword under the cursor with 'keywordprg'
+",K,builtin
+n,,L,cursor to line N from bottom of screen(cursor movement command),,"|L|		L		1  cursor to line N from bottom of screen
+",L,builtin
+n,,M,cursor to middle line of screen(cursor movement command),,"|M|		M		1  cursor to middle line of screen
+",M,builtin
+n,,N,repeat the latest '/' or '?' N times in opposite direction(cursor movement command),,"|N|		N		1  repeat the latest '/' or '?' N times in opposite direction
+",N,builtin
+n,,O,"begin a new line above the cursor and insert text, repeat N times(can be undone/redone)",,"|O|		O		2  begin a new line above the cursor and insert text, repeat N times
+",O,builtin
+n,,"{""+register}P",put the text [from register x] before the cursor N times(can be undone/redone),,"|P|		[""x]P		2  put the text [from register x] before the cursor N times
+",P,builtin
+n,,Q,"switch to ""Ex"" mode",,"|Q|		Q		   switch to ""Ex"" mode
+",Q,builtin
+n,,R,"enter replace mode: overtype existing characters, repeat the entered text N-1 times(can be undone/redone)",,"|R|		R		2  enter replace mode: overtype existing characters, repeat the entered text N-1 times
+",R,builtin
+n,,"{""+register}S","delete N lines [into register x] and start insert; synonym for ""cc"".(can be undone/redone)",,"|S|		[""x]S		2  delete N lines [into register x] and start insert; synonym for ""cc"".
+",S,builtin
+n,,T{char},cursor till after Nth occurrence of {char} to the left(cursor movement command),,"|T|		T{char}		1  cursor till after Nth occurrence of {char} to the left
+",T,builtin
+n,,U,undo all latest changes on one line(can be undone/redone),,"|U|		U		2  undo all latest changes on one line
+",U,builtin
+n,,V,start linewise Visual mode,,"|V|		V		   start linewise Visual mode
+",V,builtin
+n,,W,cursor N WORDS forward(cursor movement command),,"|W|		W		1  cursor N WORDS forward
+",W,builtin
+n,,"{""+register}X",delete N characters before the cursor [into register x](can be undone/redone),,"|X|		[""x]X		2  delete N characters before the cursor [into register x]
+",X,builtin
+n,,"{""+register}Y","yank N lines [into register x]; synonym for ""yy""",,"|Y|		[""x]Y		   yank N lines [into register x]; synonym for ""yy""
+",Y,builtin
+n,,ZZ,write if buffer changed and close window,,"|ZZ|		ZZ		   write if buffer changed and close window
+",ZZ,builtin
+n,,ZQ,close window without writing,,"|ZQ|		ZQ		   close window without writing
+",ZQ,builtin
+n,,[{char},square bracket command (see |[| below),,"|[|		[{char}		   square bracket command (see |[| below)
+",[,builtin
+n,,]{char},square bracket command (see |]| below),,"|]|		]{char}		   square bracket command (see |]| below)
+",],builtin
+n,,^,cursor to the first CHAR of the line(cursor movement command),,"|^|		^		1  cursor to the first CHAR of the line
+",^,builtin
+n,,_,cursor to the first CHAR N - 1 lines lower(cursor movement command),,"|_|		_		1  cursor to the first CHAR N - 1 lines lower
+",_,builtin
+n,,`{a-zA-Z0-9},cursor to the mark {a-zA-Z0-9}(cursor movement command),,"|`|		`{a-zA-Z0-9}	1  cursor to the mark {a-zA-Z0-9}
+",`,builtin
+n,,`(,cursor to the start of the current sentence(cursor movement command),,"|`(|		`(		1  cursor to the start of the current sentence
+",`(,builtin
+n,,`),cursor to the end of the current sentence(cursor movement command),,"|`)|		`)		1  cursor to the end of the current sentence
+",`),builtin
+n,,`<,cursor to the start of the highlighted area(cursor movement command),,"|`<|		`<		1  cursor to the start of the highlighted area
+",`<,builtin
+n,,`>,cursor to the end of the highlighted area(cursor movement command),,"|`>|		`>		1  cursor to the end of the highlighted area
+",`>,builtin
+n,,`[,cursor to the start of last operated text or start of putted text(cursor movement command),,"|`[|		`[		1  cursor to the start of last operated text or start of putted text
+",`[,builtin
+n,,`],cursor to the end of last operated text or end of putted text(cursor movement command),,"|`]|		`]		1  cursor to the end of last operated text or end of putted text
+",`],builtin
+n,,``,cursor to the position before latest jump(cursor movement command),,"|``|		``		1  cursor to the position before latest jump
+",``,builtin
+n,,`{,cursor to the start of the current paragraph(cursor movement command),,"|`{|		`{		1  cursor to the start of the current paragraph
+",`{,builtin
+n,,`},cursor to the end of the current paragraph(cursor movement command),,"|`}|		`}		1  cursor to the end of the current paragraph
+",`},builtin
+n,,a,append text after the cursor N times(can be undone/redone),,"|a|		a		2  append text after the cursor N times
+",a,builtin
+n,,b,cursor N words backward(cursor movement command),,"|b|		b		1  cursor N words backward
+",b,builtin
+n,,"{""+register}c{motion}",delete Nmove text [into register x] and start insert(can be undone/redone),,"|c|		[""x]c{motion}	2  delete Nmove text [into register x] and start insert
+",c,builtin
+n,,"{""+register}cc",delete N lines [into register x] and start insert(can be undone/redone),,"|cc|		[""x]cc		2  delete N lines [into register x] and start insert
+",cc,builtin
+n,,"{""+register}d{motion}",delete Nmove text [into register x](can be undone/redone),,"|d|		[""x]d{motion}	2  delete Nmove text [into register x]
+",d,builtin
+n,,"{""+register}dd",delete N lines [into register x](can be undone/redone),,"|dd|		[""x]dd		2  delete N lines [into register x]
+",dd,builtin
+n,,do,"same as "":diffget""(can be undone/redone)",,"|do|		do		2  same as "":diffget""
+",do,builtin
+n,,dp,"same as "":diffput""(can be undone/redone)",,"|dp|		dp		2  same as "":diffput""
+",dp,builtin
+n,,e,cursor forward to the end of word N(cursor movement command),,"|e|		e		1  cursor forward to the end of word N
+",e,builtin
+n,,f{char},cursor to Nth occurrence of {char} to the right(cursor movement command),,"|f|		f{char}		1  cursor to Nth occurrence of {char} to the right
+",f,builtin
+n,,g{char},"extended commands, see |g| below",,"|g|		g{char}		   extended commands, see |g| below
+",g,builtin
+n,,h,cursor N chars to the left(cursor movement command),,"|h|		h		1  cursor N chars to the left
+",h,builtin
+n,,i,insert text before the cursor N times(can be undone/redone),,"|i|		i		2  insert text before the cursor N times
+",i,builtin
+n,,j,cursor N lines downward(cursor movement command),,"|j|		j		1  cursor N lines downward
+",j,builtin
+n,,k,cursor N lines upward(cursor movement command),,"|k|		k		1  cursor N lines upward
+",k,builtin
+n,,l,cursor N chars to the right(cursor movement command),,"|l|		l		1  cursor N chars to the right
+",l,builtin
+n,,m{A-Za-z},set mark {A-Za-z} at cursor position,,"|m|		m{A-Za-z}	   set mark {A-Za-z} at cursor position
+",m,builtin
+n,,n,repeat the latest '/' or '?' N times(cursor movement command),,"|n|		n		1  repeat the latest '/' or '?' N times
+",n,builtin
+n,,o,"begin a new line below the cursor and insert text, repeat N times(can be undone/redone)",,"|o|		o		2  begin a new line below the cursor and insert text, repeat N times
+",o,builtin
+n,,"{""+register}p",put the text [from register x] after the cursor N times(can be undone/redone),,"|p|		[""x]p		2  put the text [from register x] after the cursor N times
+",p,builtin
+n,,"q{0-9a-zA-Z""}","record typed characters into named register {0-9a-zA-Z""} (uppercase to append)",,"|q|		q{0-9a-zA-Z""}	   record typed characters into named register {0-9a-zA-Z""} (uppercase to append)
+",q,builtin
+n,,q,(while recording) stops recording,,"|q|		q		   (while recording) stops recording
+",q,builtin
+n,,q:,edit : command-line in command-line window,,"|q:|		q:		   edit : command-line in command-line window
+",q:,builtin
+n,,q/,edit / command-line in command-line window,,"|q/|		q/		   edit / command-line in command-line window
+",q/,builtin
+n,,q?,edit ? command-line in command-line window,,"|q?|		q?		   edit ? command-line in command-line window
+",q?,builtin
+n,,r{char},replace N chars with {char}(can be undone/redone),,"|r|		r{char}		2  replace N chars with {char}
+",r,builtin
+n,,"{""+register}s",(substitute) delete N characters [into register x] and start insert(can be undone/redone),,"|s|		[""x]s		2  (substitute) delete N characters [into register x] and start insert
+",s,builtin
+n,,t{char},cursor till before Nth occurrence of {char} to the right(cursor movement command),,"|t|		t{char}		1  cursor till before Nth occurrence of {char} to the right
+",t,builtin
+n,,u,undo changes(can be undone/redone),,"|u|		u		2  undo changes
+",u,builtin
+n,,v,start characterwise Visual mode,,"|v|		v		   start characterwise Visual mode
+",v,builtin
+n,,w,cursor N words forward(cursor movement command),,"|w|		w		1  cursor N words forward
+",w,builtin
+n,,"{""+register}x",delete N characters under and after the cursor [into register x](can be undone/redone),,"|x|		[""x]x		2  delete N characters under and after the cursor [into register x]
+",x,builtin
+n,,"{""+register}y{motion}",yank Nmove text [into register x],,"|y|		[""x]y{motion}	   yank Nmove text [into register x]
+",y,builtin
+n,,"{""+register}yy",yank N lines [into register x],,"|yy|		[""x]yy		   yank N lines [into register x]
+",yy,builtin
+n,,z{char},"commands starting with 'z', see |z| below",,"|z|		z{char}		   commands starting with 'z', see |z| below
+",z,builtin
+n,,{,cursor N paragraphs backward(cursor movement command),,"|{|		{		1  cursor N paragraphs backward
+",{,builtin
+n,,|,cursor to column N(cursor movement command),,"|bar|		|		1  cursor to column N
+",bar,builtin
+n,,},cursor N paragraphs forward(cursor movement command),,"|}|		}		1  cursor N paragraphs forward
+",},builtin
+n,,~,'tildeop' off: switch case of N characters under cursor and move the cursor N characters to the right(can be undone/redone),,"|~|		~		2  'tildeop' off: switch case of N characters under cursor and move the cursor N characters to the right
+",~,builtin
+n,,~{motion},'tildeop' on: switch case of Nmove text,,"|~|		~{motion}	   'tildeop' on: switch case of Nmove text
+",~,builtin
+n,,<C-End>,"same as ""G""(cursor movement command)",,"|<C-End>|	<C-End>		1  same as ""G""
+",<C-End>,builtin
+n,,<C-Home>,"same as ""gg""(cursor movement command)",,"|<C-Home>|	<C-Home>	1  same as ""gg""
+",<C-Home>,builtin
+n,,<C-Left>,"same as ""b""(cursor movement command)",,"|<C-Left>|	<C-Left>	1  same as ""b""
+",<C-Left>,builtin
+n,,<C-LeftMouse>,""":ta"" to the keyword at the mouse click",,"|<C-LeftMouse>|	<C-LeftMouse>	   "":ta"" to the keyword at the mouse click
+",<C-LeftMouse>,builtin
+n,,<C-Right>,"same as ""w""(cursor movement command)",,"|<C-Right>|	<C-Right>	1  same as ""w""
+",<C-Right>,builtin
+n,,<C-Tab>,"same as ""g<Tab>""",,"|<C-Tab>|	<C-Tab>		   same as ""g<Tab>""
+",<C-Tab>,builtin
+n,,"{""+register}<Del>","same as ""x""(can be undone/redone)",,"|<Del>|		[""x]<Del>	2  same as ""x""
+",<Del>,builtin
+n,,{count}<Del>,remove the last digit from {count},,"|N<Del>|	{count}<Del>	   remove the last digit from {count}
+",N<Del>,builtin
+n,,<Down>,"same as ""j""(cursor movement command)",,"|<Down>|	<Down>		1  same as ""j""
+",<Down>,builtin
+n,,<End>,"same as ""$""(cursor movement command)",,"|<End>|		<End>		1  same as ""$""
+",<End>,builtin
+n,,<F1>,same as <Help>,,"|<F1>|		<F1>		   same as <Help>
+",<F1>,builtin
+n,,<Help>,open a help window,,"|<Help>|	<Help>		   open a help window
+",<Help>,builtin
+n,,<Home>,"same as ""0""(cursor movement command)",,"|<Home>|	<Home>		1  same as ""0""
+",<Home>,builtin
+n,,<Insert>,"same as ""i""(can be undone/redone)",,"|<Insert>|	<Insert>	2  same as ""i""
+",<Insert>,builtin
+n,,<Left>,"same as ""h""(cursor movement command)",,"|<Left>|	<Left>		1  same as ""h""
+",<Left>,builtin
+n,,<LeftMouse>,move cursor to the mouse click position(cursor movement command),,"|<LeftMouse>|	<LeftMouse>	1  move cursor to the mouse click position
+",<LeftMouse>,builtin
+n,,<MiddleMouse>,"same as ""gP"" at the mouse click position(can be undone/redone)",,"|<MiddleMouse>|	<MiddleMouse>	2  same as ""gP"" at the mouse click position
+",<MiddleMouse>,builtin
+n,,<PageDown>,same as CTRL-F,,"|<PageDown>|	<PageDown>	   same as CTRL-F
+",<PageDown>,builtin
+n,,<PageUp>,same as CTRL-B,,"|<PageUp>|	<PageUp>	   same as CTRL-B
+",<PageUp>,builtin
+n,,<Right>,"same as ""l""(cursor movement command)",,"|<Right>|	<Right>		1  same as ""l""
+",<Right>,builtin
+n,,<RightMouse>,"start Visual mode, move cursor to the mouse click position",,"|<RightMouse>|	<RightMouse>	   start Visual mode, move cursor to the mouse click position
+",<RightMouse>,builtin
+n,,<S-Down>,same as CTRL-F(cursor movement command),,"|<S-Down>|	<S-Down>	1  same as CTRL-F
+",<S-Down>,builtin
+n,,<S-Left>,"same as ""b""(cursor movement command)",,"|<S-Left>|	<S-Left>	1  same as ""b""
+",<S-Left>,builtin
+n,,<S-LeftMouse>,"same as ""*"" at the mouse click position",,"|<S-LeftMouse>|	<S-LeftMouse>	   same as ""*"" at the mouse click position
+",<S-LeftMouse>,builtin
+n,,<S-Right>,"same as ""w""(cursor movement command)",,"|<S-Right>|	<S-Right>	1  same as ""w""
+",<S-Right>,builtin
+n,,<S-Up>,same as CTRL-B(cursor movement command),,"|<S-Up>|	<S-Up>		1  same as CTRL-B
+",<S-Up>,builtin
+n,,<Undo>,"same as ""u""(can be undone/redone)",,"|<Undo>|	<Undo>		2  same as ""u""
+",<Undo>,builtin
+n,,<Up>,"same as ""k""(cursor movement command)",,"|<Up>|		<Up>		1  same as ""k""
+",<Up>,builtin
+n,,<ScrollWheelUp>,move window three lines up,,|<ScrollWheelUp>|	<ScrollWheelUp>		move window three lines up,<ScrollWheelUp>,builtin
+vo,,"a""",double quoted string(text object),,"|v_aquote|	a""		   double quoted string
+",v_aquote,builtin
+vo,,a',single quoted string(text object),,"|v_a'|		a'		   single quoted string
+",v_a',builtin
+vo,,a(,same as ab(text object),,"|v_a(|		a(		   same as ab
+",v_a(,builtin
+vo,,a),same as ab(text object),,"|v_a)|		a)		   same as ab
+",v_a),builtin
+vo,,a<,"""a <>"" from '<' to the matching '>'(text object)",,"|v_a<|		a<		   ""a <>"" from '<' to the matching '>'
+",v_a<,builtin
+vo,,a>,same as a<(text object),,"|v_a>|		a>		   same as a<
+",v_a>,builtin
+vo,,aB,"""a Block"" from ""[{"" to ""]}"" (with brackets)(text object)",,"|v_aB|		aB		   ""a Block"" from ""[{"" to ""]}"" (with brackets)
+",v_aB,builtin
+vo,,aW,"""a WORD"" (with white space)(text object)",,"|v_aW|		aW		   ""a WORD"" (with white space)
+",v_aW,builtin
+vo,,a[,"""a []"" from '[' to the matching ']'(text object)",,"|v_a[|		a[		   ""a []"" from '[' to the matching ']'
+",v_a[,builtin
+vo,,a],same as a[(text object),,"|v_a]|		a]		   same as a[
+",v_a],builtin
+vo,,a`,string in backticks(text object),,"|v_a`|		a`		   string in backticks
+",v_a`,builtin
+vo,,ab,"""a block"" from ""[("" to ""])"" (with braces)(text object)",,"|v_ab|		ab		   ""a block"" from ""[("" to ""])"" (with braces)
+",v_ab,builtin
+vo,,ap,"""a paragraph"" (with white space)(text object)",,"|v_ap|		ap		   ""a paragraph"" (with white space)
+",v_ap,builtin
+vo,,as,"""a sentence"" (with white space)(text object)",,"|v_as|		as		   ""a sentence"" (with white space)
+",v_as,builtin
+vo,,at,"""a tag block"" (with white space)(text object)",,"|v_at|		at		   ""a tag block"" (with white space)
+",v_at,builtin
+vo,,aw,"""a word"" (with white space)(text object)",,"|v_aw|		aw		   ""a word"" (with white space)
+",v_aw,builtin
+vo,,a{,same as aB(text object),,"|v_a{|		a{		   same as aB
+",v_a{,builtin
+vo,,a},same as aB(text object),,"|v_a}|		a}		   same as aB
+",v_a},builtin
+vo,,"i""",double quoted string without the quotes(text object),,"|v_iquote|	i""		   double quoted string without the quotes
+",v_iquote,builtin
+vo,,i',single quoted string without the quotes(text object),,"|v_i'|		i'		   single quoted string without the quotes
+",v_i',builtin
+vo,,i(,same as ib(text object),,"|v_i(|		i(		   same as ib
+",v_i(,builtin
+vo,,i),same as ib(text object),,"|v_i)|		i)		   same as ib
+",v_i),builtin
+vo,,i<,"""inner <>"" from '<' to the matching '>'(text object)",,"|v_i<|		i<		   ""inner <>"" from '<' to the matching '>'
+",v_i<,builtin
+vo,,i>,same as i<(text object),,"|v_i>|		i>		   same as i<
+",v_i>,builtin
+vo,,iB,"""inner Block"" from ""[{"" and ""]}""(text object)",,"|v_iB|		iB		   ""inner Block"" from ""[{"" and ""]}""
+",v_iB,builtin
+vo,,iW,"""inner WORD""(text object)",,"|v_iW|		iW		   ""inner WORD""
+",v_iW,builtin
+vo,,i[,"""inner []"" from '[' to the matching ']'(text object)",,"|v_i[|		i[		   ""inner []"" from '[' to the matching ']'
+",v_i[,builtin
+vo,,i],same as i[(text object),,"|v_i]|		i]		   same as i[
+",v_i],builtin
+vo,,i`,string in backticks without the backticks(text object),,"|v_i`|		i`		   string in backticks without the backticks
+",v_i`,builtin
+vo,,ib,"""inner block"" from ""[("" to ""])""(text object)",,"|v_ib|		ib		   ""inner block"" from ""[("" to ""])""
+",v_ib,builtin
+vo,,ip,"""inner paragraph""(text object)",,"|v_ip|		ip		   ""inner paragraph""
+",v_ip,builtin
+vo,,is,"""inner sentence""(text object)",,"|v_is|		is		   ""inner sentence""
+",v_is,builtin
+vo,,it,"""inner tag block""(text object)",,"|v_it|		it		   ""inner tag block""
+",v_it,builtin
+vo,,iw,"""inner word""(text object)",,"|v_iw|		iw		   ""inner word""
+",v_iw,builtin
+vo,,i{,same as iB(text object),,"|v_i{|		i{		   same as iB
+",v_i{,builtin
+vo,,i},same as iB(text object),,"|v_i}|		i}		   same as iB
+",v_i},builtin
+n,,<C-w><C-b>,"same as ""CTRL-W b""(window command)",,"|CTRL-W_CTRL-B|	CTRL-W CTRL-B	   same as ""CTRL-W b""
+",CTRL-W_CTRL-B,builtin
+n,,<C-w><C-c>,"same as ""CTRL-W c""(window command)",,"|CTRL-W_CTRL-C|	CTRL-W CTRL-C	   same as ""CTRL-W c""
+",CTRL-W_CTRL-C,builtin
+n,,<C-w><C-d>,"same as ""CTRL-W d""(window command)",,"|CTRL-W_CTRL-D|	CTRL-W CTRL-D	   same as ""CTRL-W d""
+",CTRL-W_CTRL-D,builtin
+n,,<C-w><C-f>,"same as ""CTRL-W f""(window command)",,"|CTRL-W_CTRL-F|	CTRL-W CTRL-F	   same as ""CTRL-W f""
+",CTRL-W_CTRL-F,builtin
+n,,<C-w><C-g>,"same as ""CTRL-W g ..""(window command)",,"		CTRL-W CTRL-G	   same as ""CTRL-W g ..""
+",,builtin
+n,,<C-w><C-h>,"same as ""CTRL-W h""(window command)",,"|CTRL-W_CTRL-H|	CTRL-W CTRL-H	   same as ""CTRL-W h""
+",CTRL-W_CTRL-H,builtin
+n,,<C-w><C-i>,"same as ""CTRL-W i""(window command)",,"|CTRL-W_CTRL-I|	CTRL-W CTRL-I	   same as ""CTRL-W i""
+",CTRL-W_CTRL-I,builtin
+n,,<C-w><C-j>,"same as ""CTRL-W j""(window command)",,"|CTRL-W_CTRL-J|	CTRL-W CTRL-J	   same as ""CTRL-W j""
+",CTRL-W_CTRL-J,builtin
+n,,<C-w><C-k>,"same as ""CTRL-W k""(window command)",,"|CTRL-W_CTRL-K|	CTRL-W CTRL-K	   same as ""CTRL-W k""
+",CTRL-W_CTRL-K,builtin
+n,,<C-w><C-l>,"same as ""CTRL-W l""(window command)",,"|CTRL-W_CTRL-L|	CTRL-W CTRL-L	   same as ""CTRL-W l""
+",CTRL-W_CTRL-L,builtin
+n,,<C-w><C-n>,"same as ""CTRL-W n""(window command)",,"|CTRL-W_CTRL-N|	CTRL-W CTRL-N	   same as ""CTRL-W n""
+",CTRL-W_CTRL-N,builtin
+n,,<C-w><C-o>,"same as ""CTRL-W o""(window command)",,"|CTRL-W_CTRL-O|	CTRL-W CTRL-O	   same as ""CTRL-W o""
+",CTRL-W_CTRL-O,builtin
+n,,<C-w><C-p>,"same as ""CTRL-W p""(window command)",,"|CTRL-W_CTRL-P|	CTRL-W CTRL-P	   same as ""CTRL-W p""
+",CTRL-W_CTRL-P,builtin
+n,,<C-w><C-q>,"same as ""CTRL-W q""(window command)",,"|CTRL-W_CTRL-Q|	CTRL-W CTRL-Q	   same as ""CTRL-W q""
+",CTRL-W_CTRL-Q,builtin
+n,,<C-w><C-r>,"same as ""CTRL-W r""(window command)",,"|CTRL-W_CTRL-R|	CTRL-W CTRL-R	   same as ""CTRL-W r""
+",CTRL-W_CTRL-R,builtin
+n,,<C-w><C-s>,"same as ""CTRL-W s""(window command)",,"|CTRL-W_CTRL-S|	CTRL-W CTRL-S	   same as ""CTRL-W s""
+",CTRL-W_CTRL-S,builtin
+n,,<C-w><C-t>,"same as ""CTRL-W t""(window command)",,"|CTRL-W_CTRL-T|	CTRL-W CTRL-T	   same as ""CTRL-W t""
+",CTRL-W_CTRL-T,builtin
+n,,<C-w><C-v>,"same as ""CTRL-W v""(window command)",,"|CTRL-W_CTRL-V|	CTRL-W CTRL-V	   same as ""CTRL-W v""
+",CTRL-W_CTRL-V,builtin
+n,,<C-w><C-w>,"same as ""CTRL-W w""(window command)",,"|CTRL-W_CTRL-W|	CTRL-W CTRL-W	   same as ""CTRL-W w""
+",CTRL-W_CTRL-W,builtin
+n,,<C-w><C-x>,"same as ""CTRL-W x""(window command)",,"|CTRL-W_CTRL-X|	CTRL-W CTRL-X	   same as ""CTRL-W x""
+",CTRL-W_CTRL-X,builtin
+n,,<C-w><C-z>,"same as ""CTRL-W z""(window command)",,"|CTRL-W_CTRL-Z|	CTRL-W CTRL-Z	   same as ""CTRL-W z""
+",CTRL-W_CTRL-Z,builtin
+n,,<C-w><C-]>,"same as ""CTRL-W ]""(window command)",,"|CTRL-W_CTRL-]|	CTRL-W CTRL-]	   same as ""CTRL-W ]""
+",CTRL-W_CTRL-],builtin
+n,,<C-w><C-^>,"same as ""CTRL-W ^""(window command)",,"|CTRL-W_CTRL-^|	CTRL-W CTRL-^	   same as ""CTRL-W ^""
+",CTRL-W_CTRL-^,builtin
+n,,<C-w><C-_>,"same as ""CTRL-W _""(window command)",,"|CTRL-W_CTRL-_|	CTRL-W CTRL-_	   same as ""CTRL-W _""
+",CTRL-W_CTRL-_,builtin
+n,,<C-w>+,increase current window height N lines(window command),,"|CTRL-W_+|	CTRL-W +	   increase current window height N lines
+",CTRL-W_+,builtin
+n,,<C-w>-,decrease current window height N lines(window command),,"|CTRL-W_-|	CTRL-W -	   decrease current window height N lines
+",CTRL-W_-,builtin
+n,,<C-w>:,"same as |:|, edit a command line(window command)",,"|CTRL-W_:|	CTRL-W :	   same as |:|, edit a command line
+",CTRL-W_:,builtin
+n,,<C-w><,decrease current window width N columns(window command),,"|CTRL-W_<|	CTRL-W <	   decrease current window width N columns
+",CTRL-W_<,builtin
+n,,<C-w>=,make all windows the same height & width(window command),,"|CTRL-W_=|	CTRL-W =	   make all windows the same height & width
+",CTRL-W_=,builtin
+n,,<C-w>>,increase current window width N columns(window command),,"|CTRL-W_>|	CTRL-W >	   increase current window width N columns
+",CTRL-W_>,builtin
+n,,<C-w>H,move current window to the far left(window command),,"|CTRL-W_H|	CTRL-W H	   move current window to the far left
+",CTRL-W_H,builtin
+n,,<C-w>J,move current window to the very bottom(window command),,"|CTRL-W_J|	CTRL-W J	   move current window to the very bottom
+",CTRL-W_J,builtin
+n,,<C-w>K,move current window to the very top(window command),,"|CTRL-W_K|	CTRL-W K	   move current window to the very top
+",CTRL-W_K,builtin
+n,,<C-w>L,move current window to the far right(window command),,"|CTRL-W_L|	CTRL-W L	   move current window to the far right
+",CTRL-W_L,builtin
+n,,<C-w>P,go to preview window(window command),,"|CTRL-W_P|	CTRL-W P	   go to preview window
+",CTRL-W_P,builtin
+n,,<C-w>R,rotate windows upwards N times(window command),,"|CTRL-W_R|	CTRL-W R	   rotate windows upwards N times
+",CTRL-W_R,builtin
+n,,<C-w>S,"same as ""CTRL-W s""(window command)",,"|CTRL-W_S|	CTRL-W S	   same as ""CTRL-W s""
+",CTRL-W_S,builtin
+n,,<C-w>T,move current window to a new tab page(window command),,"|CTRL-W_T|	CTRL-W T	   move current window to a new tab page
+",CTRL-W_T,builtin
+n,,<C-w>W,go to N previous window (wrap around)(window command),,"|CTRL-W_W|	CTRL-W W	   go to N previous window (wrap around)
+",CTRL-W_W,builtin
+n,,<C-w>],split window and jump to tag under cursor(window command),,"|CTRL-W_]|	CTRL-W ]	   split window and jump to tag under cursor
+",CTRL-W_],builtin
+n,,<C-w>^,split current window and edit alternate file N(window command),,"|CTRL-W_^|	CTRL-W ^	   split current window and edit alternate file N
+",CTRL-W_^,builtin
+n,,<C-w>_,set current window height to N (default: very high)(window command),,"|CTRL-W__|	CTRL-W _	   set current window height to N (default: very high)
+",CTRL-W__,builtin
+n,,<C-w>b,go to bottom window(window command),,"|CTRL-W_b|	CTRL-W b	   go to bottom window
+",CTRL-W_b,builtin
+n,,<C-w>c,close current window (like |:close|)(window command),,"|CTRL-W_c|	CTRL-W c	   close current window (like |:close|)
+",CTRL-W_c,builtin
+n,,<C-w>d,split window and jump to definition under the cursor(window command),,"|CTRL-W_d|	CTRL-W d	   split window and jump to definition under the cursor
+",CTRL-W_d,builtin
+n,,<C-w>f,split window and edit file name under the cursor(window command),,"|CTRL-W_f|	CTRL-W f	   split window and edit file name under the cursor
+",CTRL-W_f,builtin
+n,,<C-w>F,split window and edit file name under the cursor and jump to the line number following the file name.(window command),,"|CTRL-W_F|	CTRL-W F	   split window and edit file name under the cursor and jump to the line number following the file name.
+",CTRL-W_F,builtin
+n,,<C-w>g],split window and do |:tselect| for tag under cursor(window command),,"|CTRL-W_g]|	CTRL-W g ]	   split window and do |:tselect| for tag under cursor
+",CTRL-W_g],builtin
+n,,<C-w>g},do a |:ptjump| to the tag under the cursor(window command),,"|CTRL-W_g}|	CTRL-W g }	   do a |:ptjump| to the tag under the cursor
+",CTRL-W_g},builtin
+n,,<C-w>gf,edit file name under the cursor in a new tab page(window command),,"|CTRL-W_gf|	CTRL-W g f	   edit file name under the cursor in a new tab page
+",CTRL-W_gf,builtin
+n,,<C-w>gF,edit file name under the cursor in a new tab page and jump to the line number following the file name.(window command),,"|CTRL-W_gF|	CTRL-W g F	   edit file name under the cursor in a new tab page and jump to the line number following the file name.
+",CTRL-W_gF,builtin
+n,,<C-w>gt,same as `gt`: go to next tab page(window command),,"|CTRL-W_gt|	CTRL-W g t	   same as `gt`: go to next tab page
+",CTRL-W_gt,builtin
+n,,<C-w>gT,same as `gT`: go to previous tab page(window command),,"|CTRL-W_gT|	CTRL-W g T	   same as `gT`: go to previous tab page
+",CTRL-W_gT,builtin
+n,,<C-w>g<Tab>,same as |g<Tab>|: go to last accessed tab page.(window command),,"|CTRL-W_g<Tab>|	CTRL-W g <Tab>	   same as |g<Tab>|: go to last accessed tab page.
+",CTRL-W_g<Tab>,builtin
+n,,<C-w>h,go to Nth left window (stop at first window)(window command),,"|CTRL-W_h|	CTRL-W h	   go to Nth left window (stop at first window)
+",CTRL-W_h,builtin
+n,,<C-w>i,split window and jump to declaration of identifier under the cursor(window command),,"|CTRL-W_i|	CTRL-W i	   split window and jump to declaration of identifier under the cursor
+",CTRL-W_i,builtin
+n,,<C-w>j,go N windows down (stop at last window)(window command),,"|CTRL-W_j|	CTRL-W j	   go N windows down (stop at last window)
+",CTRL-W_j,builtin
+n,,<C-w>k,go N windows up (stop at first window)(window command),,"|CTRL-W_k|	CTRL-W k	   go N windows up (stop at first window)
+",CTRL-W_k,builtin
+n,,<C-w>l,go to Nth right window (stop at last window)(window command),,"|CTRL-W_l|	CTRL-W l	   go to Nth right window (stop at last window)
+",CTRL-W_l,builtin
+n,,<C-w>n,"open new window, N lines high(window command)",,"|CTRL-W_n|	CTRL-W n	   open new window, N lines high
+",CTRL-W_n,builtin
+n,,<C-w>o,close all but current window (like |:only|)(window command),,"|CTRL-W_o|	CTRL-W o	   close all but current window (like |:only|)
+",CTRL-W_o,builtin
+n,,<C-w>p,go to previous (last accessed) window(window command),,"|CTRL-W_p|	CTRL-W p	   go to previous (last accessed) window
+",CTRL-W_p,builtin
+n,,<C-w>q,quit current window (like |:quit|)(window command),,"|CTRL-W_q|	CTRL-W q	   quit current window (like |:quit|)
+",CTRL-W_q,builtin
+n,,<C-w>r,rotate windows downwards N times(window command),,"|CTRL-W_r|	CTRL-W r	   rotate windows downwards N times
+",CTRL-W_r,builtin
+n,,<C-w>s,"split current window in two parts, new window N lines high(window command)",,"|CTRL-W_s|	CTRL-W s	   split current window in two parts, new window N lines high
+",CTRL-W_s,builtin
+n,,<C-w>t,go to top window(window command),,"|CTRL-W_t|	CTRL-W t	   go to top window
+",CTRL-W_t,builtin
+n,,<C-w>v,"split current window vertically, new window N columns wide(window command)",,"|CTRL-W_v|	CTRL-W v	   split current window vertically, new window N columns wide
+",CTRL-W_v,builtin
+n,,<C-w>w,go to N next window (wrap around)(window command),,"|CTRL-W_w|	CTRL-W w	   go to N next window (wrap around)
+",CTRL-W_w,builtin
+n,,<C-w>x,exchange current window with window N (default: next window)(window command),,"|CTRL-W_x|	CTRL-W x	   exchange current window with window N (default: next window)
+",CTRL-W_x,builtin
+n,,<C-w>z,close preview window(window command),,"|CTRL-W_z|	CTRL-W z	   close preview window
+",CTRL-W_z,builtin
+n,,<C-w>|,set window width to N columns(window command),,"|CTRL-W_bar|	CTRL-W |	   set window width to N columns
+",CTRL-W_bar,builtin
+n,,<C-w>},show tag under cursor in preview window(window command),,"|CTRL-W_}|	CTRL-W }	   show tag under cursor in preview window
+",CTRL-W_},builtin
+n,,<C-w><Down>,"same as ""CTRL-W j""(window command)",,"|CTRL-W_<Down>|	CTRL-W <Down>	   same as ""CTRL-W j""
+",CTRL-W_<Down>,builtin
+n,,<C-w><Up>,"same as ""CTRL-W k""(window command)",,"|CTRL-W_<Up>|	CTRL-W <Up>	   same as ""CTRL-W k""
+",CTRL-W_<Up>,builtin
+n,,<C-w><Left>,"same as ""CTRL-W h""(window command)",,"|CTRL-W_<Left>|	CTRL-W <Left>	   same as ""CTRL-W h""
+",CTRL-W_<Left>,builtin
+n,,<C-w>g<C-]>,split window and do |:tjump| to tag under cursor(window command),,"|CTRL-W_g_CTRL-]|		CTRL-W g CTRL-]		  split window and do |:tjump| to tag under cursor
+",CTRL-W_g_CTRL-],builtin
+n,,<C-w><Right>,"same as ""CTRL-W l""(window command)",,"|CTRL-W_<Right>|		CTRL-W <Right>	 	  same as ""CTRL-W l""
+",CTRL-W_<Right>,builtin
+n,,[<C-d>,"jump to first #define found in current and included files matching the word under the cursor, start searching at beginning of current file(can be undone/redone)",,"|[_CTRL-D|	[ CTRL-D	   jump to first #define found in current and included files matching the word under the cursor, start searching at beginning of current file
+",[_CTRL-D,builtin
+n,,[<C-i>,"jump to first line in current and included files that contains the word under the cursor, start searching at beginning of current file(can be undone/redone)",,"|[_CTRL-I|	[ CTRL-I	   jump to first line in current and included files that contains the word under the cursor, start searching at beginning of current file
+",[_CTRL-I,builtin
+n,,[#,"cursor to N previous unmatched #if, #else or #ifdef(cursor movement command)",,"|[#|		[#		1  cursor to N previous unmatched #if, #else or #ifdef
+",[#,builtin
+n,,[',"cursor to previous lowercase mark, on first non-blank(cursor movement command)",,"|['|		['		1  cursor to previous lowercase mark, on first non-blank
+",[',builtin
+n,,[(,cursor N times back to unmatched '('(cursor movement command),,"|[(|		[(		1  cursor N times back to unmatched '('
+",[(,builtin
+n,,[*,"same as ""[/""(cursor movement command)",,"|[star|		[*		1  same as ""[/""
+",[star,builtin
+n,,[`,cursor to previous lowercase mark(cursor movement command),,"|[`|		[`		1  cursor to previous lowercase mark
+",[`,builtin
+n,,[/,cursor to N previous start of a C comment(cursor movement command),,"|[/|		[/		1  cursor to N previous start of a C comment
+",[/,builtin
+n,,[D,"list all defines found in current and included files matching the word under the cursor, start searching at beginning of current file(can be undone/redone)",,"|[D|		[D		   list all defines found in current and included files matching the word under the cursor, start searching at beginning of current file
+",[D,builtin
+n,,[I,"list all lines found in current and included files that contain the word under the cursor, start searching at beginning of current file(can be undone/redone)",,"|[I|		[I		   list all lines found in current and included files that contain the word under the cursor, start searching at beginning of current file
+",[I,builtin
+n,,[P,"same as ""[p""(can be undone/redone)",,"|[P|		[P		2  same as ""[p""
+",[P,builtin
+n,,[[,cursor N sections backward(cursor movement command),,"|[[|		[[		1  cursor N sections backward
+",[[,builtin
+n,,[],cursor N SECTIONS backward(cursor movement command),,"|[]|		[]		1  cursor N SECTIONS backward
+",[],builtin
+n,,[c,cursor N times backwards to start of change(cursor movement command),,"|[c|		[c		1  cursor N times backwards to start of change
+",[c,builtin
+n,,[d,"show first #define found in current and included files matching the word under the cursor, start searching at beginning of current file(can be undone/redone)",,"|[d|		[d		   show first #define found in current and included files matching the word under the cursor, start searching at beginning of current file
+",[d,builtin
+n,,[f,"same as ""gf""(can be undone/redone)",,"|[f|		[f		   same as ""gf""
+",[f,builtin
+n,,[i,"show first line found in current and included files that contains the word under the cursor, start searching at beginning of current file(can be undone/redone)",,"|[i|		[i		   show first line found in current and included files that contains the word under the cursor, start searching at beginning of current file
+",[i,builtin
+n,,[m,cursor N times back to start of member function(cursor movement command),,"|[m|		[m		1  cursor N times back to start of member function
+",[m,builtin
+n,,[p,"like ""P"", but adjust indent to current line(can be undone/redone)",,"|[p|		[p		2  like ""P"", but adjust indent to current line
+",[p,builtin
+n,,[s,move to the previous misspelled word(cursor movement command),,"|[s|		[s		1  move to the previous misspelled word
+",[s,builtin
+n,,[z,move to start of open fold(cursor movement command),,"|[z|		[z		1  move to start of open fold
+",[z,builtin
+n,,[{,cursor N times back to unmatched '{'(cursor movement command),,"|[{|		[{		1  cursor N times back to unmatched '{'
+",[{,builtin
+n,,]<C-d>,"jump to first #define found in current and included files matching the word under the cursor, start searching at cursor position(can be undone/redone)",,"|]_CTRL-D|	] CTRL-D	   jump to first #define found in current and included files matching the word under the cursor, start searching at cursor position
+",]_CTRL-D,builtin
+n,,]<C-i>,"jump to first line in current and included files that contains the word under the cursor, start searching at cursor position(can be undone/redone)",,"|]_CTRL-I|	] CTRL-I	   jump to first line in current and included files that contains the word under the cursor, start searching at cursor position
+",]_CTRL-I,builtin
+n,,]#,cursor to N next unmatched #endif or #else(cursor movement command),,"|]#|		]#		1  cursor to N next unmatched #endif or #else
+",]#,builtin
+n,,]',"cursor to next lowercase mark, on first non-blank(cursor movement command)",,"|]'|		]'		1  cursor to next lowercase mark, on first non-blank
+",]',builtin
+n,,]),cursor N times forward to unmatched ')'(cursor movement command),,"|])|		])		1  cursor N times forward to unmatched ')'
+",]),builtin
+n,,]*,"same as ""]/""(cursor movement command)",,"|]star|		]*		1  same as ""]/""
+",]star,builtin
+n,,]`,cursor to next lowercase mark(cursor movement command),,"|]`|		]`		1  cursor to next lowercase mark
+",]`,builtin
+n,,]/,cursor to N next end of a C comment(cursor movement command),,"|]/|		]/		1  cursor to N next end of a C comment
+",]/,builtin
+n,,]D,"list all #defines found in current and included files matching the word under the cursor, start searching at cursor position(can be undone/redone)",,"|]D|		]D		   list all #defines found in current and included files matching the word under the cursor, start searching at cursor position
+",]D,builtin
+n,,]I,"list all lines found in current and included files that contain the word under the cursor, start searching at cursor position(can be undone/redone)",,"|]I|		]I		   list all lines found in current and included files that contain the word under the cursor, start searching at cursor position
+",]I,builtin
+n,,]P,"same as ""[p""(can be undone/redone)",,"|]P|		]P		2  same as ""[p""
+",]P,builtin
+n,,][,cursor N SECTIONS forward(cursor movement command),,"|][|		][		1  cursor N SECTIONS forward
+",][,builtin
+n,,]],cursor N sections forward(cursor movement command),,"|]]|		]]		1  cursor N sections forward
+",]],builtin
+n,,]c,cursor N times forward to start of change(cursor movement command),,"|]c|		]c		1  cursor N times forward to start of change
+",]c,builtin
+n,,]d,"show first #define found in current and included files matching the word under the cursor, start searching at cursor position(can be undone/redone)",,"|]d|		]d		   show first #define found in current and included files matching the word under the cursor, start searching at cursor position
+",]d,builtin
+n,,]f,"same as ""gf""(can be undone/redone)",,"|]f|		]f		   same as ""gf""
+",]f,builtin
+n,,]i,"show first line found in current and included files that contains the word under the cursor, start searching at cursor position(can be undone/redone)",,"|]i|		]i		   show first line found in current and included files that contains the word under the cursor, start searching at cursor position
+",]i,builtin
+n,,]m,cursor N times forward to end of member function(cursor movement command),,"|]m|		]m		1  cursor N times forward to end of member function
+",]m,builtin
+n,,]p,"like ""p"", but adjust indent to current line(can be undone/redone)",,"|]p|		]p		2  like ""p"", but adjust indent to current line
+",]p,builtin
+n,,]s,move to next misspelled word(cursor movement command),,"|]s|		]s		1  move to next misspelled word
+",]s,builtin
+n,,]z,move to end of open fold(cursor movement command),,"|]z|		]z		1  move to end of open fold
+",]z,builtin
+n,,]},cursor N times forward to unmatched '}'(cursor movement command),,"|]}|		]}		1  cursor N times forward to unmatched '}'
+",]},builtin
+n,,g<C-a>,only when compiled with MEM_PROFILE defined: dump a memory profile(can be undone/redone),,"|g_CTRL-A|	g CTRL-A	   only when compiled with MEM_PROFILE defined: dump a memory profile
+",g_CTRL-A,builtin
+n,,g<C-g>,show information about current cursor position(can be undone/redone),,"|g_CTRL-G|	g CTRL-G	   show information about current cursor position
+",g_CTRL-G,builtin
+n,,g<C-h>,start Select block mode(can be undone/redone),,"|g_CTRL-H|	g CTRL-H	   start Select block mode
+",g_CTRL-H,builtin
+n,,g<C-]>,|:tjump| to the tag under the cursor(can be undone/redone),,"|g_CTRL-]|	g CTRL-]	   |:tjump| to the tag under the cursor
+",g_CTRL-],builtin
+n,,g#,"like ""#"", but without using ""\<"" and ""\>""(cursor movement command)",,"|g#|		g#		1  like ""#"", but without using ""\<"" and ""\>""
+",g#,builtin
+n,,g$,when 'wrap' off go to rightmost character of the current line that is on the screen; when 'wrap' on go to the rightmost character of the current screen line(cursor movement command),,"|g$|		g$		1  when 'wrap' off go to rightmost character of the current line that is on the screen; when 'wrap' on go to the rightmost character of the current screen line
+",g$,builtin
+n,,g&,"repeat last "":s"" on all lines(can be undone/redone)",,"|g&|		g&		2  repeat last "":s"" on all lines
+",g&,builtin
+n,,g'{mark},like |'| but without changing the jumplist(cursor movement command),,"|g'|		g'{mark}	1  like |'| but without changing the jumplist
+",g',builtin
+n,,g`{mark},like |`| but without changing the jumplist(cursor movement command),,"|g`|		g`{mark}	1  like |`| but without changing the jumplist
+",g`,builtin
+n,,g*,"like ""*"", but without using ""\<"" and ""\>""(cursor movement command)",,"|gstar|		g*		1  like ""*"", but without using ""\<"" and ""\>""
+",gstar,builtin
+n,,g+,go to newer text state N times(can be undone/redone),,"|g+|		g+		   go to newer text state N times
+",g+,builtin
+n,,"g,",go to N newer position in change list(cursor movement command),,"|g,|		g,		1  go to N newer position in change list
+","g,",builtin
+n,,g-,go to older text state N times(can be undone/redone),,"|g-|		g-		   go to older text state N times
+",g-,builtin
+n,,g0,when 'wrap' off go to leftmost character of the current line that is on the screen; when 'wrap' on go to the leftmost character of the current screen line(cursor movement command),,"|g0|		g0		1  when 'wrap' off go to leftmost character of the current line that is on the screen; when 'wrap' on go to the leftmost character of the current screen line
+",g0,builtin
+n,,g8,print hex value of bytes used in UTF-8 character under the cursor(can be undone/redone),,"|g8|		g8		   print hex value of bytes used in UTF-8 character under the cursor
+",g8,builtin
+n,,g;,go to N older position in change list(cursor movement command),,"|g;|		g;		1  go to N older position in change list
+",g;,builtin
+n,,g<,display previous command output(can be undone/redone),,"|g<|		g<		   display previous command output
+",g<,builtin
+n,,g?,Rot13 encoding operator(can be undone/redone),,"|g?|		g?		2  Rot13 encoding operator
+",g?,builtin
+n,,g??,Rot13 encode current line(can be undone/redone),,"|g?g?|		g??		2  Rot13 encode current line
+",g?g?,builtin
+n,,g?g?,Rot13 encode current line(can be undone/redone),,"|g?g?|		g?g?		2  Rot13 encode current line
+",g?g?,builtin
+n,,gD,go to definition of word under the cursor in current file(cursor movement command),,"|gD|		gD		1  go to definition of word under the cursor in current file
+",gD,builtin
+n,,gE,go backwards to the end of the previous WORD(cursor movement command),,"|gE|		gE		1  go backwards to the end of the previous WORD
+",gE,builtin
+n,,gH,start Select line mode(can be undone/redone),,"|gH|		gH		   start Select line mode
+",gH,builtin
+n,,gI,"like ""I"", but always start in column 1(can be undone/redone)",,"|gI|		gI		2  like ""I"", but always start in column 1
+",gI,builtin
+n,,gJ,join lines without inserting space(can be undone/redone),,"|gJ|		gJ		2  join lines without inserting space
+",gJ,builtin
+n,,gN,"1,2  find the previous match with the last used search pattern and Visually select it(can be undone/redone)",,"|gN|		gN	      1,2  find the previous match with the last used search pattern and Visually select it
+",gN,builtin
+n,,"{""+register}gP","put the text [from register x] before the cursor N times, leave the cursor after it(can be undone/redone)",,"|gP|		[""x]gP		2  put the text [from register x] before the cursor N times, leave the cursor after it
+",gP,builtin
+n,,gQ,"switch to ""Ex"" mode with Vim editing(can be undone/redone)",,"|gQ|		gQ		    switch to ""Ex"" mode with Vim editing
+",gQ,builtin
+n,,gR,enter Virtual Replace mode(can be undone/redone),,"|gR|		gR		2  enter Virtual Replace mode
+",gR,builtin
+n,,gT,go to the previous tab page(can be undone/redone),,"|gT|		gT		   go to the previous tab page
+",gT,builtin
+n,,gU{motion},make Nmove text uppercase(can be undone/redone),,"|gU|		gU{motion}	2  make Nmove text uppercase
+",gU,builtin
+n,,gV,don't reselect the previous Visual area when executing a mapping or menu in Select mode(can be undone/redone),,"|gV|		gV		   don't reselect the previous Visual area when executing a mapping or menu in Select mode
+",gV,builtin
+n,,g],:tselect on the tag under the cursor(can be undone/redone),,"|g]|		g]		   :tselect on the tag under the cursor
+",g],builtin
+n,,g^,when 'wrap' off go to leftmost non-white character of the current line that is on the screen; when 'wrap' on go to the leftmost non-white character of the current screen line(cursor movement command),,"|g^|		g^		1  when 'wrap' off go to leftmost non-white character of the current line that is on the screen; when 'wrap' on go to the leftmost non-white character of the current screen line
+",g^,builtin
+n,,g_,cursor to the last CHAR N - 1 lines lower(cursor movement command),,"|g_|		g_		1  cursor to the last CHAR N - 1 lines lower
+",g_,builtin
+n,,ga,print ascii value of character under the cursor(can be undone/redone),,"|ga|		ga		   print ascii value of character under the cursor
+",ga,builtin
+n,,gd,go to definition of word under the cursor in current function(cursor movement command),,"|gd|		gd		1  go to definition of word under the cursor in current function
+",gd,builtin
+n,,ge,go backwards to the end of the previous word(cursor movement command),,"|ge|		ge		1  go backwards to the end of the previous word
+",ge,builtin
+n,,gf,start editing the file whose name is under the cursor(can be undone/redone),,"|gf|		gf		   start editing the file whose name is under the cursor
+",gf,builtin
+n,,gF,start editing the file whose name is under the cursor and jump to the line number following the filename.(can be undone/redone),,"|gF|		gF		   start editing the file whose name is under the cursor and jump to the line number following the filename.
+",gF,builtin
+n,,gg,"cursor to line N, default first line(cursor movement command)",,"|gg|		gg		1  cursor to line N, default first line
+",gg,builtin
+n,,gh,start Select mode(can be undone/redone),,"|gh|		gh		   start Select mode
+",gh,builtin
+n,,gi,"like ""i"", but first move to the |'^| mark(can be undone/redone)",,"|gi|		gi		2  like ""i"", but first move to the |'^| mark
+",gi,builtin
+n,,gj,"like ""j"", but when 'wrap' on go N screen lines down(cursor movement command)",,"|gj|		gj		1  like ""j"", but when 'wrap' on go N screen lines down
+",gj,builtin
+n,,gk,"like ""k"", but when 'wrap' on go N screen lines up(cursor movement command)",,"|gk|		gk		1  like ""k"", but when 'wrap' on go N screen lines up
+",gk,builtin
+n,,gm,go to character at middle of the screenline(cursor movement command),,"|gm|		gm		1  go to character at middle of the screenline
+",gm,builtin
+n,,gM,go to character at middle of the text line(cursor movement command),,"|gM|		gM		1  go to character at middle of the text line
+",gM,builtin
+n,,gn,"1,2  find the next match with the last used search pattern and Visually select it(can be undone/redone)",,"|gn|		gn	      1,2  find the next match with the last used search pattern and Visually select it
+",gn,builtin
+n,,go,cursor to byte N in the buffer(cursor movement command),,"|go|		go		1  cursor to byte N in the buffer
+",go,builtin
+n,,"{""+register}gp","put the text [from register x] after the cursor N times, leave the cursor after it(can be undone/redone)",,"|gp|		[""x]gp		2  put the text [from register x] after the cursor N times, leave the cursor after it
+",gp,builtin
+n,,gq{motion},format Nmove text(can be undone/redone),,"|gq|		gq{motion}	2  format Nmove text
+",gq,builtin
+n,,gr{char},virtual replace N chars with {char}(can be undone/redone),,"|gr|		gr{char}	2  virtual replace N chars with {char}
+",gr,builtin
+n,,gs,go to sleep for N seconds (default 1)(can be undone/redone),,"|gs|		gs		   go to sleep for N seconds (default 1)
+",gs,builtin
+n,,gt,go to the next tab page(can be undone/redone),,"|gt|		gt		   go to the next tab page
+",gt,builtin
+n,,gu{motion},make Nmove text lowercase(can be undone/redone),,"|gu|		gu{motion}	2  make Nmove text lowercase
+",gu,builtin
+n,,gv,reselect the previous Visual area(can be undone/redone),,"|gv|		gv		   reselect the previous Visual area
+",gv,builtin
+n,,gw{motion},format Nmove text and keep cursor(can be undone/redone),,"|gw|		gw{motion}	2  format Nmove text and keep cursor
+",gw,builtin
+n,,gx,execute application for file name under the cursor (only with |netrw| plugin)(can be undone/redone),,"|netrw-gx|	gx		   execute application for file name under the cursor (only with |netrw| plugin)
+",netrw-gx,builtin
+n,,g@{motion},call 'operatorfunc'(can be undone/redone),,"|g@|		g@{motion}	   call 'operatorfunc'
+",g@,builtin
+n,,g~{motion},swap case for Nmove text(can be undone/redone),,"|g~|		g~{motion}	2  swap case for Nmove text
+",g~,builtin
+n,,g<Down>,"same as ""gj""(cursor movement command)",,"|g<Down>|	g<Down>		1  same as ""gj""
+",g<Down>,builtin
+n,,g<End>,"same as ""g$""(cursor movement command)",,"|g<End>|	g<End>		1  same as ""g$""
+",g<End>,builtin
+n,,g<Home>,"same as ""g0""(cursor movement command)",,"|g<Home>|	g<Home>		1  same as ""g0""
+",g<Home>,builtin
+n,,g<LeftMouse>,same as <C-LeftMouse>(can be undone/redone),,"|g<LeftMouse>|	g<LeftMouse>	   same as <C-LeftMouse>
+",g<LeftMouse>,builtin
+n,,g<MiddleMouse>,same as <C-MiddleMouse>(can be undone/redone),,"		g<MiddleMouse>	   same as <C-MiddleMouse>
+",,builtin
+n,,g<RightMouse>,same as <C-RightMouse>(can be undone/redone),,"|g<RightMouse>|	g<RightMouse>	   same as <C-RightMouse>
+",g<RightMouse>,builtin
+n,,g<Tab>,go to the last accessed tab page.(can be undone/redone),,"|g<Tab>|	g<Tab>		   go to the last accessed tab page.
+",g<Tab>,builtin
+n,,g<Up>,"same as ""gk""(cursor movement command)",,"|g<Up>|		g<Up>		1  same as ""gk""
+",g<Up>,builtin
+n,,z<CR>,"redraw, cursor line to top of window, cursor on first non-blank(can be undone/redone)",,"|z<CR>|		z<CR>		   redraw, cursor line to top of window, cursor on first non-blank
+",z<CR>,builtin
+n,,z{height}<CR>,"redraw, make window {height} lines high(can be undone/redone)",,"|zN<CR>|	z{height}<CR>	   redraw, make window {height} lines high
+",zN<CR>,builtin
+n,,z+,"cursor on line N (default line below window), otherwise like ""z<CR>""(can be undone/redone)",,"|z+|		z+		   cursor on line N (default line below window), otherwise like ""z<CR>""
+",z+,builtin
+n,,z-,"redraw, cursor line at bottom of window, cursor on first non-blank(can be undone/redone)",,"|z-|		z-		   redraw, cursor line at bottom of window, cursor on first non-blank
+",z-,builtin
+n,,z.,"redraw, cursor line to center of window, cursor on first non-blank(can be undone/redone)",,"|z.|		z.		   redraw, cursor line to center of window, cursor on first non-blank
+",z.,builtin
+n,,z=,give spelling suggestions(can be undone/redone),,"|z=|		z=		   give spelling suggestions
+",z=,builtin
+n,,zA,open a closed fold or close an open fold recursively(can be undone/redone),,"|zA|		zA		   open a closed fold or close an open fold recursively
+",zA,builtin
+n,,zC,close folds recursively(can be undone/redone),,"|zC|		zC		   close folds recursively
+",zC,builtin
+n,,zD,delete folds recursively(can be undone/redone),,"|zD|		zD		   delete folds recursively
+",zD,builtin
+n,,zE,eliminate all folds(can be undone/redone),,"|zE|		zE		   eliminate all folds
+",zE,builtin
+n,,zF,create a fold for N lines(can be undone/redone),,"|zF|		zF		   create a fold for N lines
+",zF,builtin
+n,,zG,temporarily mark word as correctly spelled(can be undone/redone),,"|zG|		zG		   temporarily mark word as correctly spelled
+",zG,builtin
+n,,zH,when 'wrap' off scroll half a screenwidth to the right(can be undone/redone),,"|zH|		zH		   when 'wrap' off scroll half a screenwidth to the right
+",zH,builtin
+n,,zL,when 'wrap' off scroll half a screenwidth to the left(can be undone/redone),,"|zL|		zL		   when 'wrap' off scroll half a screenwidth to the left
+",zL,builtin
+n,,zM,set 'foldlevel' to zero(can be undone/redone),,"|zM|		zM		   set 'foldlevel' to zero
+",zM,builtin
+n,,zN,set 'foldenable'(can be undone/redone),,"|zN|		zN		   set 'foldenable'
+",zN,builtin
+n,,zO,open folds recursively(can be undone/redone),,"|zO|		zO		   open folds recursively
+",zO,builtin
+n,,zR,set 'foldlevel' to the deepest fold(can be undone/redone),,"|zR|		zR		   set 'foldlevel' to the deepest fold
+",zR,builtin
+n,,zW,temporarily mark word as incorrectly spelled(can be undone/redone),,"|zW|		zW		   temporarily mark word as incorrectly spelled
+",zW,builtin
+n,,zX,re-apply 'foldlevel'(can be undone/redone),,"|zX|		zX		   re-apply 'foldlevel'
+",zX,builtin
+n,,z^,"cursor on line N (default line above window), otherwise like ""z-""(can be undone/redone)",,"|z^|		z^		   cursor on line N (default line above window), otherwise like ""z-""
+",z^,builtin
+n,,za,"open a closed fold, close an open fold(can be undone/redone)",,"|za|		za		   open a closed fold, close an open fold
+",za,builtin
+n,,zb,"redraw, cursor line at bottom of window(can be undone/redone)",,"|zb|		zb		   redraw, cursor line at bottom of window
+",zb,builtin
+n,,zc,close a fold(can be undone/redone),,"|zc|		zc		   close a fold
+",zc,builtin
+n,,zd,delete a fold(can be undone/redone),,"|zd|		zd		   delete a fold
+",zd,builtin
+n,,ze,when 'wrap' off scroll horizontally to position the cursor at the end (right side) of the screen(can be undone/redone),,"|ze|		ze		   when 'wrap' off scroll horizontally to position the cursor at the end (right side) of the screen
+",ze,builtin
+n,,zf{motion},create a fold for Nmove text(can be undone/redone),,"|zf|		zf{motion}	   create a fold for Nmove text
+",zf,builtin
+n,,zg,permanently mark word as correctly spelled(can be undone/redone),,"|zg|		zg		   permanently mark word as correctly spelled
+",zg,builtin
+n,,zh,when 'wrap' off scroll screen N characters to the right(can be undone/redone),,"|zh|		zh		   when 'wrap' off scroll screen N characters to the right
+",zh,builtin
+n,,zi,toggle 'foldenable'(can be undone/redone),,"|zi|		zi		   toggle 'foldenable'
+",zi,builtin
+n,,zj,move to the start of the next fold(cursor movement command),,"|zj|		zj		1  move to the start of the next fold
+",zj,builtin
+n,,zk,move to the end of the previous fold(cursor movement command),,"|zk|		zk		1  move to the end of the previous fold
+",zk,builtin
+n,,zl,when 'wrap' off scroll screen N characters to the left(can be undone/redone),,"|zl|		zl		   when 'wrap' off scroll screen N characters to the left
+",zl,builtin
+n,,zm,subtract one from 'foldlevel'(can be undone/redone),,"|zm|		zm		   subtract one from 'foldlevel'
+",zm,builtin
+n,,zn,reset 'foldenable'(can be undone/redone),,"|zn|		zn		   reset 'foldenable'
+",zn,builtin
+n,,zo,open fold(can be undone/redone),,"|zo|		zo		   open fold
+",zo,builtin
+n,,zp,paste in block-mode without trailing spaces(can be undone/redone),,"|zp|		zp		   paste in block-mode without trailing spaces
+",zp,builtin
+n,,zP,paste in block-mode without trailing spaces(can be undone/redone),,"|zP|		zP		   paste in block-mode without trailing spaces
+",zP,builtin
+n,,zr,add one to 'foldlevel'(can be undone/redone),,"|zr|		zr		   add one to 'foldlevel'
+",zr,builtin
+n,,zs,when 'wrap' off scroll horizontally to position the cursor at the start (left side) of the screen(can be undone/redone),,"|zs|		zs		   when 'wrap' off scroll horizontally to position the cursor at the start (left side) of the screen
+",zs,builtin
+n,,zt,"redraw, cursor line at top of window(can be undone/redone)",,"|zt|		zt		   redraw, cursor line at top of window
+",zt,builtin
+n,,zuw,undo |zw|(can be undone/redone),,"|zuw|		zuw		   undo |zw|
+",zuw,builtin
+n,,zug,undo |zg|(can be undone/redone),,"|zug|		zug		   undo |zg|
+",zug,builtin
+n,,zuW,undo |zW|(can be undone/redone),,"|zuW|		zuW		   undo |zW|
+",zuW,builtin
+n,,zuG,undo |zG|(can be undone/redone),,"|zuG|		zuG		   undo |zG|
+",zuG,builtin
+n,,zv,open enough folds to view the cursor line(can be undone/redone),,"|zv|		zv		   open enough folds to view the cursor line
+",zv,builtin
+n,,zw,permanently mark word as incorrectly spelled(can be undone/redone),,"|zw|		zw		   permanently mark word as incorrectly spelled
+",zw,builtin
+n,,zx,"re-apply 'foldlevel' and do ""zv""(can be undone/redone)",,"|zx|		zx		   re-apply 'foldlevel' and do ""zv""
+",zx,builtin
+n,,zy,yank without trailing spaces(can be undone/redone),,"|zy|		zy		   yank without trailing spaces
+",zy,builtin
+n,,zz,"redraw, cursor line at center of window(can be undone/redone)",,"|zz|		zz		   redraw, cursor line at center of window
+",zz,builtin
+n,,z<Left>,"same as ""zh""(can be undone/redone)",,"|z<Left>|	z<Left>		   same as ""zh""
+",z<Left>,builtin
+n,,z<Right>,"same as ""zl""(can be undone/redone)",,"|z<Right>|	z<Right>	   same as ""zl""
+",z<Right>,builtin
+o,,v,force operator to work characterwise(can be undone/redone),,"|o_v|		v		force operator to work characterwise
+",o_v,builtin
+o,,V,force operator to work linewise(can be undone/redone),,"|o_V|		V		force operator to work linewise
+",o_V,builtin
+o,,<C-v>,force operator to work blockwise(can be undone/redone),,"|o_CTRL-V|	CTRL-V		force operator to work blockwise
+",o_CTRL-V,builtin
+v,,<C-a>,add N to number in highlighted text(can be undone/redone),,"|v_CTRL-A|	CTRL-A		2  add N to number in highlighted text
+",v_CTRL-A,builtin
+v,,<C-c>,stop Visual mode(can be undone/redone),,"|v_CTRL-C|	CTRL-C		   stop Visual mode
+",v_CTRL-C,builtin
+v,,<C-g>,toggle between Visual mode and Select mode(can be undone/redone),,"|v_CTRL-G|	CTRL-G		   toggle between Visual mode and Select mode
+",v_CTRL-G,builtin
+v,,<BS>,Select mode: delete highlighted area(can be undone/redone),,"|v_<BS>|	<BS>		2  Select mode: delete highlighted area
+",v_<BS>,builtin
+v,,<C-h>,same as <BS>(can be undone/redone),,"|v_CTRL-H|	CTRL-H		2  same as <BS>
+",v_CTRL-H,builtin
+v,,<C-o>,switch from Select to Visual mode for one command(can be undone/redone),,"|v_CTRL-O|	CTRL-O		   switch from Select to Visual mode for one command
+",v_CTRL-O,builtin
+v,,<C-v>,make Visual mode blockwise or stop Visual mode(can be undone/redone),,"|v_CTRL-V|	CTRL-V		   make Visual mode blockwise or stop Visual mode
+",v_CTRL-V,builtin
+v,,<C-x>,subtract N from number in highlighted text(can be undone/redone),,"|v_CTRL-X|	CTRL-X		2  subtract N from number in highlighted text
+",v_CTRL-X,builtin
+v,,<Esc>,stop Visual mode(can be undone/redone),,"|v_<Esc>|	<Esc>		   stop Visual mode
+",v_<Esc>,builtin
+v,,<C-]>,jump to highlighted tag(can be undone/redone),,"|v_CTRL-]|	CTRL-]		   jump to highlighted tag
+",v_CTRL-],builtin
+v,,!{filter},filter the highlighted lines through the external command {filter}(can be undone/redone),,"|v_!|		!{filter}	2  filter the highlighted lines through the external command {filter}
+",v_!,builtin
+v,,:,start a command-line with the highlighted lines as a range(can be undone/redone),,"|v_:|		:		   start a command-line with the highlighted lines as a range
+",v_:,builtin
+v,,<,shift the highlighted lines one 'shiftwidth' left(can be undone/redone),,"|v_<|		<		2  shift the highlighted lines one 'shiftwidth' left
+",v_<,builtin
+v,,=,filter the highlighted lines through the external program given with the 'equalprg' option(can be undone/redone),,"|v_=|		=		2  filter the highlighted lines through the external program given with the 'equalprg' option
+",v_=,builtin
+v,,>,shift the highlighted lines one 'shiftwidth' right(can be undone/redone),,"|v_>|		>		2  shift the highlighted lines one 'shiftwidth' right
+",v_>,builtin
+v,,A,"block mode: append same text in all lines, after the highlighted area(can be undone/redone)",,"|v_b_A|		A		2  block mode: append same text in all lines, after the highlighted area
+",v_b_A,builtin
+v,,C,delete the highlighted lines and start insert(can be undone/redone),,"|v_C|		C		2  delete the highlighted lines and start insert
+",v_C,builtin
+v,,D,delete the highlighted lines(can be undone/redone),,"|v_D|		D		2  delete the highlighted lines
+",v_D,builtin
+v,,I,"block mode: insert same text in all lines, before the highlighted area(can be undone/redone)",,"|v_b_I|		I		2  block mode: insert same text in all lines, before the highlighted area
+",v_b_I,builtin
+v,,J,join the highlighted lines(can be undone/redone),,"|v_J|		J		2  join the highlighted lines
+",v_J,builtin
+v,,K,run 'keywordprg' on the highlighted area(can be undone/redone),,"|v_K|		K		   run 'keywordprg' on the highlighted area
+",v_K,builtin
+v,,O,move horizontally to other corner of area(can be undone/redone),,"|v_O|		O		   move horizontally to other corner of area
+",v_O,builtin
+v,,P,replace highlighted area with register contents; registers are unchanged(can be undone/redone),,"|v_P|		P		   replace highlighted area with register contents; registers are unchanged
+",v_P,builtin
+v,,Q,does not start Ex mode(can be undone/redone),,"		Q		   does not start Ex mode
+",,builtin
+v,,R,delete the highlighted lines and start insert(can be undone/redone),,"|v_R|		R		2  delete the highlighted lines and start insert
+",v_R,builtin
+v,,S,delete the highlighted lines and start insert(can be undone/redone),,"|v_S|		S		2  delete the highlighted lines and start insert
+",v_S,builtin
+v,,U,make highlighted area uppercase(can be undone/redone),,"|v_U|		U		2  make highlighted area uppercase
+",v_U,builtin
+v,,V,make Visual mode linewise or stop Visual mode(can be undone/redone),,"|v_V|		V		   make Visual mode linewise or stop Visual mode
+",v_V,builtin
+v,,X,delete the highlighted lines(can be undone/redone),,"|v_X|		X		2  delete the highlighted lines
+",v_X,builtin
+v,,Y,yank the highlighted lines(can be undone/redone),,"|v_Y|		Y		   yank the highlighted lines
+",v_Y,builtin
+v,,"a""",extend highlighted area with a double quoted string(can be undone/redone),,"|v_aquote|	a""		   extend highlighted area with a double quoted string
+",v_aquote,builtin
+v,,a',extend highlighted area with a single quoted string(can be undone/redone),,"|v_a'|		a'		   extend highlighted area with a single quoted string
+",v_a',builtin
+v,,a(,same as ab(can be undone/redone),,"|v_a(|		a(		   same as ab
+",v_a(,builtin
+v,,a),same as ab(can be undone/redone),,"|v_a)|		a)		   same as ab
+",v_a),builtin
+v,,a<,extend highlighted area with a <> block(can be undone/redone),,"|v_a<|		a<		   extend highlighted area with a <> block
+",v_a<,builtin
+v,,a>,same as a<(can be undone/redone),,"|v_a>|		a>		   same as a<
+",v_a>,builtin
+v,,aB,extend highlighted area with a {} block(can be undone/redone),,"|v_aB|		aB		   extend highlighted area with a {} block
+",v_aB,builtin
+v,,aW,"extend highlighted area with ""a WORD""(can be undone/redone)",,"|v_aW|		aW		   extend highlighted area with ""a WORD""
+",v_aW,builtin
+v,,a[,extend highlighted area with a [] block(can be undone/redone),,"|v_a[|		a[		   extend highlighted area with a [] block
+",v_a[,builtin
+v,,a],same as a[(can be undone/redone),,"|v_a]|		a]		   same as a[
+",v_a],builtin
+v,,a`,extend highlighted area with a backtick quoted string(can be undone/redone),,"|v_a`|		a`		   extend highlighted area with a backtick quoted string
+",v_a`,builtin
+v,,ab,extend highlighted area with a () block(can be undone/redone),,"|v_ab|		ab		   extend highlighted area with a () block
+",v_ab,builtin
+v,,ap,extend highlighted area with a paragraph(can be undone/redone),,"|v_ap|		ap		   extend highlighted area with a paragraph
+",v_ap,builtin
+v,,as,extend highlighted area with a sentence(can be undone/redone),,"|v_as|		as		   extend highlighted area with a sentence
+",v_as,builtin
+v,,at,extend highlighted area with a tag block(can be undone/redone),,"|v_at|		at		   extend highlighted area with a tag block
+",v_at,builtin
+v,,aw,"extend highlighted area with ""a word""(can be undone/redone)",,"|v_aw|		aw		   extend highlighted area with ""a word""
+",v_aw,builtin
+v,,a{,same as aB(can be undone/redone),,"|v_a{|		a{		   same as aB
+",v_a{,builtin
+v,,a},same as aB(can be undone/redone),,"|v_a}|		a}		   same as aB
+",v_a},builtin
+v,,c,delete highlighted area and start insert(can be undone/redone),,"|v_c|		c		2  delete highlighted area and start insert
+",v_c,builtin
+v,,d,delete highlighted area(can be undone/redone),,"|v_d|		d		2  delete highlighted area
+",v_d,builtin
+v,,g<C-a>,add N to number in highlighted text(can be undone/redone),,"|v_g_CTRL-A|	g CTRL-A	2  add N to number in highlighted text
+",v_g_CTRL-A,builtin
+v,,g<C-x>,subtract N from number in highlighted text(can be undone/redone),,"|v_g_CTRL-X|	g CTRL-X	2  subtract N from number in highlighted text
+",v_g_CTRL-X,builtin
+v,,gJ,join the highlighted lines without inserting spaces(can be undone/redone),,"|v_gJ|		gJ		2  join the highlighted lines without inserting spaces
+",v_gJ,builtin
+v,,gq,format the highlighted lines(can be undone/redone),,"|v_gq|		gq		2  format the highlighted lines
+",v_gq,builtin
+v,,gv,exchange current and previous highlighted area(can be undone/redone),,"|v_gv|		gv		   exchange current and previous highlighted area
+",v_gv,builtin
+v,,"i""",extend highlighted area with a double quoted string (without quotes)(can be undone/redone),,"|v_iquote|	i""		   extend highlighted area with a double quoted string (without quotes)
+",v_iquote,builtin
+v,,i',extend highlighted area with a single quoted string (without quotes)(can be undone/redone),,"|v_i'|		i'		   extend highlighted area with a single quoted string (without quotes)
+",v_i',builtin
+v,,i(,same as ib(can be undone/redone),,"|v_i(|		i(		   same as ib
+",v_i(,builtin
+v,,i),same as ib(can be undone/redone),,"|v_i)|		i)		   same as ib
+",v_i),builtin
+v,,i<,extend highlighted area with inner <> block(can be undone/redone),,"|v_i<|		i<		   extend highlighted area with inner <> block
+",v_i<,builtin
+v,,i>,same as i<(can be undone/redone),,"|v_i>|		i>		   same as i<
+",v_i>,builtin
+v,,iB,extend highlighted area with inner {} block(can be undone/redone),,"|v_iB|		iB		   extend highlighted area with inner {} block
+",v_iB,builtin
+v,,iW,"extend highlighted area with ""inner WORD""(can be undone/redone)",,"|v_iW|		iW		   extend highlighted area with ""inner WORD""
+",v_iW,builtin
+v,,i[,extend highlighted area with inner [] block(can be undone/redone),,"|v_i[|		i[		   extend highlighted area with inner [] block
+",v_i[,builtin
+v,,i],same as i[(can be undone/redone),,"|v_i]|		i]		   same as i[
+",v_i],builtin
+v,,i`,extend highlighted area with a backtick quoted string (without the backticks)(can be undone/redone),,"|v_i`|		i`		   extend highlighted area with a backtick quoted string (without the backticks)
+",v_i`,builtin
+v,,ib,extend highlighted area with inner () block(can be undone/redone),,"|v_ib|		ib		   extend highlighted area with inner () block
+",v_ib,builtin
+v,,ip,extend highlighted area with inner paragraph(can be undone/redone),,"|v_ip|		ip		   extend highlighted area with inner paragraph
+",v_ip,builtin
+v,,is,extend highlighted area with inner sentence(can be undone/redone),,"|v_is|		is		   extend highlighted area with inner sentence
+",v_is,builtin
+v,,it,extend highlighted area with inner tag block(can be undone/redone),,"|v_it|		it		   extend highlighted area with inner tag block
+",v_it,builtin
+v,,iw,"extend highlighted area with ""inner word""(can be undone/redone)",,"|v_iw|		iw		   extend highlighted area with ""inner word""
+",v_iw,builtin
+v,,i{,same as iB(can be undone/redone),,"|v_i{|		i{		   same as iB
+",v_i{,builtin
+v,,i},same as iB(can be undone/redone),,"|v_i}|		i}		   same as iB
+",v_i},builtin
+v,,o,move cursor to other corner of area(can be undone/redone),,"|v_o|		o		   move cursor to other corner of area
+",v_o,builtin
+v,,p,replace highlighted area with register contents; deleted text in unnamed register(can be undone/redone),,"|v_p|		p		   replace highlighted area with register contents; deleted text in unnamed register
+",v_p,builtin
+v,,r,replace highlighted area with a character(can be undone/redone),,"|v_r|		r		2  replace highlighted area with a character
+",v_r,builtin
+v,,s,delete highlighted area and start insert(can be undone/redone),,"|v_s|		s		2  delete highlighted area and start insert
+",v_s,builtin
+v,,u,make highlighted area lowercase(can be undone/redone),,"|v_u|		u		2  make highlighted area lowercase
+",v_u,builtin
+v,,v,make Visual mode characterwise or stop Visual mode(can be undone/redone),,"|v_v|		v		   make Visual mode characterwise or stop Visual mode
+",v_v,builtin
+v,,x,delete the highlighted area(can be undone/redone),,"|v_x|		x		2  delete the highlighted area
+",v_x,builtin
+v,,y,yank the highlighted area(can be undone/redone),,"|v_y|		y		   yank the highlighted area
+",v_y,builtin
+v,,~,swap case for the highlighted area(can be undone/redone),,"|v_~|		~		2  swap case for the highlighted area
+",v_~,builtin
+v,,<C-\><C-n>,stop Visual mode(can be undone/redone),,"|v_CTRL-\_CTRL-N|	CTRL-\ CTRL-N	   stop Visual mode
+",v_CTRL-\_CTRL-N,builtin
+v,,<C-\><C-g>,go to mode specified with 'insertmode'(can be undone/redone),,"|v_CTRL-\_CTRL-G|	CTRL-\ CTRL-G	   go to mode specified with 'insertmode'
+",v_CTRL-\_CTRL-G,builtin
+v,,<C-a>,do completion on the pattern in front of the cursor and insert all matches(can be undone/redone),,"|c_CTRL-A|	CTRL-A		do completion on the pattern in front of the cursor and insert all matches
+",c_CTRL-A,builtin
+v,,<C-b>,cursor to begin of command-line(can be undone/redone),,"|c_CTRL-B|	CTRL-B		cursor to begin of command-line
+",c_CTRL-B,builtin
+v,,<C-c>,same as <Esc>(can be undone/redone),,"|c_CTRL-C|	CTRL-C		same as <Esc>
+",c_CTRL-C,builtin
+v,,<C-d>,list completions that match the pattern in front of the cursor(can be undone/redone),,"|c_CTRL-D|	CTRL-D		list completions that match the pattern in front of the cursor
+",c_CTRL-D,builtin
+v,,<C-e>,cursor to end of command-line(can be undone/redone),,"|c_CTRL-E|	CTRL-E		cursor to end of command-line
+",c_CTRL-E,builtin
+v,,<C-f>,default value for 'cedit': opens the command-line window; otherwise not used(can be undone/redone),,"|'cedit'|	CTRL-F		default value for 'cedit': opens the command-line window; otherwise not used
+",'cedit',builtin
+v,,<C-g>,next match when 'incsearch' is active(can be undone/redone),,"|c_CTRL-G|	CTRL-G		next match when 'incsearch' is active
+",c_CTRL-G,builtin
+v,,<BS>,delete the character in front of the cursor(can be undone/redone),,"|c_<BS>|	<BS>		delete the character in front of the cursor
+",c_<BS>,builtin
+v,,<C-h>,same as <BS>(can be undone/redone),,"|c_CTRL-H|	CTRL-H		same as <BS>
+",c_CTRL-H,builtin
+v,,<Tab>,if 'wildchar' is <Tab>: Do completion on the pattern in front of the cursor(can be undone/redone),,"|c_<Tab>|	<Tab>		if 'wildchar' is <Tab>: Do completion on the pattern in front of the cursor
+",c_<Tab>,builtin
+v,,<S-Tab>,same as CTRL-P(can be undone/redone),,"|c_<S-Tab>|	<S-Tab>		same as CTRL-P
+",c_<S-Tab>,builtin
+v,,<C-i>,same as <Tab>(can be undone/redone),,"|c_CTRL-I|	CTRL-I		same as <Tab>
+",c_CTRL-I,builtin
+v,,<NL>,same as <CR>(can be undone/redone),,"|c_<NL>|	<NL>		same as <CR>
+",c_<NL>,builtin
+v,,<C-j>,same as <CR>(can be undone/redone),,"|c_CTRL-J|	CTRL-J		same as <CR>
+",c_CTRL-J,builtin
+v,,<C-l>,do completion on the pattern in front of the cursor and insert the longest common part(can be undone/redone),,"|c_CTRL-L|	CTRL-L		do completion on the pattern in front of the cursor and insert the longest common part
+",c_CTRL-L,builtin
+v,,<CR>,execute entered command(can be undone/redone),,"|c_<CR>|	<CR>		execute entered command
+",c_<CR>,builtin
+v,,<C-m>,same as <CR>(can be undone/redone),,"|c_CTRL-M|	CTRL-M		same as <CR>
+",c_CTRL-M,builtin
+v,,<C-n>,"after using 'wildchar' with multiple matches: go to next match, otherwise: recall older command-line from history.(can be undone/redone)",,"|c_CTRL-N|	CTRL-N		after using 'wildchar' with multiple matches: go to next match, otherwise: recall older command-line from history.
+",c_CTRL-N,builtin
+v,,<C-p>,"after using 'wildchar' with multiple matches: go to previous match, otherwise: recall older command-line from history.(can be undone/redone)",,"|c_CTRL-P|	CTRL-P		after using 'wildchar' with multiple matches: go to previous match, otherwise: recall older command-line from history.
+",c_CTRL-P,builtin
+v,,<C-q>,"same as CTRL-V, unless it's used for terminal control flow(can be undone/redone)",,"|c_CTRL-Q|	CTRL-Q		same as CTRL-V, unless it's used for terminal control flow
+",c_CTRL-Q,builtin
+v,,<C-s>,"not used, or used for terminal control flow(can be undone/redone)",,"		CTRL-S		not used, or used for terminal control flow
+",,builtin
+v,,<C-t>,previous match when 'incsearch' is active(can be undone/redone),,"|c_CTRL-T|	CTRL-T		previous match when 'incsearch' is active
+",c_CTRL-T,builtin
+v,,<C-u>,remove all characters(can be undone/redone),,"|c_CTRL-U|	CTRL-U		remove all characters
+",c_CTRL-U,builtin
+v,,<C-v>,"insert next non-digit literally, insert three digit decimal number as a single byte.(can be undone/redone)",,"|c_CTRL-V|	CTRL-V		insert next non-digit literally, insert three digit decimal number as a single byte.
+",c_CTRL-V,builtin
+v,,<C-w>,delete the word in front of the cursor(can be undone/redone),,"|c_CTRL-W|	CTRL-W		delete the word in front of the cursor
+",c_CTRL-W,builtin
+v,,<C-x>,not used (reserved for completion)(can be undone/redone),,"		CTRL-X		not used (reserved for completion)
+",,builtin
+v,,<C-y>,copy (yank) modeless selection(can be undone/redone),,"		CTRL-Y		copy (yank) modeless selection
+",,builtin
+v,,<C-z>,not used (reserved for suspend)(can be undone/redone),,"		CTRL-Z		not used (reserved for suspend)
+",,builtin
+v,,<Esc>,abandon command-line without executing it(can be undone/redone),,"|c_<Esc>|	<Esc>		abandon command-line without executing it
+",c_<Esc>,builtin
+v,,<C-[>,same as <Esc>(can be undone/redone),,"|c_CTRL-[|	CTRL-[		same as <Esc>
+",c_CTRL-[,builtin
+v,,<C-]>,trigger abbreviation(can be undone/redone),,"|c_CTRL-]|	CTRL-]		trigger abbreviation
+",c_CTRL-],builtin
+v,,<C-^>,toggle use of |:lmap| mappings(can be undone/redone),,"|c_CTRL-^|	CTRL-^		toggle use of |:lmap| mappings
+",c_CTRL-^,builtin
+v,,<C-_>,"when 'allowrevins' set: change language (Hebrew, Farsi)(can be undone/redone)",,"|c_CTRL-_|	CTRL-_		when 'allowrevins' set: change language (Hebrew, Farsi)
+",c_CTRL-_,builtin
+v,,<Del>,delete the character under the cursor(can be undone/redone),,"|c_<Del>|	<Del>		delete the character under the cursor
+",c_<Del>,builtin
+v,,<Left>,cursor left(can be undone/redone),,"|c_<Left>|	<Left>		cursor left
+",c_<Left>,builtin
+v,,<Right>,cursor right(can be undone/redone),,"|c_<Right>|	<Right>		cursor right
+",c_<Right>,builtin
+v,,<Up>,recall previous command-line from history that matches pattern in front of the cursor(can be undone/redone),,"|c_<Up>|	<Up>		recall previous command-line from history that matches pattern in front of the cursor
+",c_<Up>,builtin
+v,,<S-Up>,recall previous command-line from history(can be undone/redone),,"|c_<S-Up>|	<S-Up>		recall previous command-line from history
+",c_<S-Up>,builtin
+v,,<Down>,recall next command-line from history that matches pattern in front of the cursor(can be undone/redone),,"|c_<Down>|	<Down>		recall next command-line from history that matches pattern in front of the cursor
+",c_<Down>,builtin
+v,,<Home>,cursor to start of command-line(can be undone/redone),,"|c_<Home>|	<Home>		cursor to start of command-line
+",c_<Home>,builtin
+v,,<End>,cursor to end of command-line(can be undone/redone),,"|c_<End>|	<End>		cursor to end of command-line
+",c_<End>,builtin
+v,,<C-k>{char1}{char2},enter digraph(can be undone/redone),,"|c_CTRL-K|	CTRL-K {char1} {char2}	enter digraph
+",c_CTRL-K,builtin
+v,,<C-r>{regname},insert the contents of a register or object under the cursor as if typed(can be undone/redone),,"|c_CTRL-R|	CTRL-R {regname}	insert the contents of a register or object under the cursor as if typed
+",c_CTRL-R,builtin
+v,,<C-r><C-r>,{regname}(can be undone/redone),,"|c_CTRL-R_CTRL-R|	CTRL-R CTRL-R	{regname}
+",c_CTRL-R_CTRL-R,builtin
+v,,<C-r><C-o>,{regname} insert the contents of a register or object under the cursor literally(can be undone/redone),,"|c_CTRL-R_CTRL-O|	CTRL-R CTRL-O	{regname} insert the contents of a register or object under the cursor literally
+",c_CTRL-R_CTRL-O,builtin
+v,,<C-\><C-n>,"go to Normal mode, abandon command-line(can be undone/redone)",,"|c_CTRL-\_CTRL-N|	CTRL-\ CTRL-N	go to Normal mode, abandon command-line
+",c_CTRL-\_CTRL-N,builtin
+v,,<C-\><C-g>,"go to mode specified with 'insertmode', abandon command-line(can be undone/redone)",,"|c_CTRL-\_CTRL-G|	CTRL-\ CTRL-G	go to mode specified with 'insertmode', abandon command-line
+",c_CTRL-\_CTRL-G,builtin
+v,,<C-\>e,{expr} replace the command line with the result of {expr}(can be undone/redone),,"|c_CTRL-\_e|	CTRL-\ e	{expr} replace the command line with the result of {expr}
+",c_CTRL-\_e,builtin
+v,,<S-Left>,cursor one word left(can be undone/redone),,"|c_<S-Left>|	<S-Left>	cursor one word left
+",c_<S-Left>,builtin
+v,,<C-Left>,cursor one word left(can be undone/redone),,"|c_<C-Left>|	<C-Left>	cursor one word left
+",c_<C-Left>,builtin
+v,,<S-Right>,cursor one word right(can be undone/redone),,"|c_<S-Right>|	<S-Right>	cursor one word right
+",c_<S-Right>,builtin
+v,,<C-Right>,cursor one word right(can be undone/redone),,"|c_<C-Right>|	<C-Right>	cursor one word right
+",c_<C-Right>,builtin
+v,,<S-Down>,recall next command-line from history(can be undone/redone),,"|c_<S-Down>|	<S-Down>	recall next command-line from history
+",c_<S-Down>,builtin
+v,,<PageDown>,same as <S-Down>(can be undone/redone),,"|c_<PageDown>|	<PageDown>	same as <S-Down>
+",c_<PageDown>,builtin
+v,,<PageUp>,same as <S-Up>(can be undone/redone),,"|c_<PageUp>|	<PageUp>	same as <S-Up>
+",c_<PageUp>,builtin
+v,,<Insert>,toggle insert/overstrike mode(can be undone/redone),,"|c_<Insert>|	<Insert>	toggle insert/overstrike mode
+",c_<Insert>,builtin
+v,,<LeftMouse>,cursor at mouse click(can be undone/redone),,"|c_<LeftMouse>|	<LeftMouse>	cursor at mouse click
+",c_<LeftMouse>,builtin
+v,,<C-\><C-n>,switch to Terminal-Normal mode(can be undone/redone)(terminal-job mode),,"|t_CTRL-\_CTRL-N|	CTRL-\ CTRL-N	switch to Terminal-Normal mode
+",t_CTRL-\_CTRL-N,builtin
+v,,<C-w>N,switch to Terminal-Normal mode(can be undone/redone)(terminal-job mode),,"|t_CTRL-W_N|	CTRL-W N	switch to Terminal-Normal mode
+",t_CTRL-W_N,builtin
+v,,<C-w>:,enter an Ex command(can be undone/redone)(terminal-job mode),,"|t_CTRL-W_:|	CTRL-W :	enter an Ex command
+",t_CTRL-W_:,builtin
+v,,<C-w>.,type CTRL-W in the terminal(can be undone/redone)(terminal-job mode),,"|t_CTRL-W_.|	CTRL-W .	type CTRL-W in the terminal
+",t_CTRL-W_.,builtin
+v,,<C-w><C-\>,send a CTRL-\ to the job in the terminal(can be undone/redone)(terminal-job mode),,"		CTRL-W CTRL-\	send a CTRL-\ to the job in the terminal
+",,builtin
+v,,<C-w><C-c>,forcefully ends the job(can be undone/redone)(terminal-job mode),,"|t_CTRL-W_CTRL-C|	CTRL-W CTRL-C	forcefully ends the job
+",t_CTRL-W_CTRL-C,builtin
+v,,<C-w><C-w>,move focus to the next window(can be undone/redone)(terminal-job mode),,"|t_CTRL-W_CTRL-W|	CTRL-W CTRL-W	move focus to the next window
+",t_CTRL-W_CTRL-W,builtin
+v,,<C-w>gt,"go to next tabpage, same as `gt`(can be undone/redone)(terminal-job mode)",,"|t_CTRL-W_gt|	CTRL-W gt	go to next tabpage, same as `gt`
+",t_CTRL-W_gt,builtin
+v,,<C-w>gT,"go to previous tabpage, same as `gT`(can be undone/redone)(terminal-job mode)",,"|t_CTRL-W_gT|	CTRL-W gT	go to previous tabpage, same as `gT`
+",t_CTRL-W_gT,builtin
+v,,"<C-w>""",{register} paste register in the terminal(can be undone/redone)(terminal-job mode),,"|t_CTRL-W_quote|	CTRL-W		"" {register} paste register in the terminal
+",t_CTRL-W_quote,builtin
