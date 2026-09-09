@@ -2,10 +2,12 @@
   "name": "keycraft-workspace",
   "private": true,
   "scripts": {
+    "bumpversion": "node scripts/bumpversion.cjs",
+    "test:release": "node --test scripts/test/*.test.cjs",
     "dev:ui": "npm --prefix keycraft start",
     "build:ui": "npm --prefix keycraft run build",
     "desktop": "npm run build:ui && npm --prefix desktop start",
     "package:mac": "npm run build:ui && npm --prefix desktop run package:mac",
-    "test": "npm --prefix keycraft test -- --watchAll=false --runInBand && npm --prefix desktop test"
+    "test": "npm run test:release && npm --prefix keycraft test -- --watchAll=false --runInBand && npm --prefix desktop test"
   }
 }

@@ -13,6 +13,8 @@ A macOS app for reviewing and exploring Vim and tmux shortcuts.
 
 ## Use it
 
+Download a release candidate from [GitHub Releases](https://github.com/laixintao/keycraft/releases). Choose `macos-arm64` for Apple Silicon or `macos-x64` for Intel. Open the DMG and drag **keycraft.app** into **Applications**, or extract the ZIP and copy the app there. These builds are ad-hoc signed and not Apple-notarized; macOS Gatekeeper may block them.
+
 Open **keycraft.app** and click **Import from Vim**, **Import from tmux**, or **Import text or file**. Each import creates a new snapshot.
 
 Choose **All snapshots**, **Vim**, or **tmux** in the sidebar. Use **Filter snapshots** to find a setup, then open it to explore its mappings.
@@ -67,11 +69,33 @@ The packaging script currently uses an ad-hoc signature. Public distribution req
 
 ## Automated tests and builds
 
-The [Test and build workflow](.github/workflows/ci.yml) runs on pushes and pull requests, and can be started manually from GitHub's **Actions** tab. It uses Node.js 24 and builds Apple Silicon (`arm64`) and Intel (`x64`) versions on separate macOS runners.
+The [Test, build and release workflow](.github/workflows/ci.yml) runs on pushes to `main`, RC tag pushes, and pull requests, and can be started manually from GitHub's **Actions** tab. Development branch pushes are tested through their pull requests to avoid duplicate builds; branches without a pull request can be tested with a manual run. It uses Node.js 24 and builds Apple Silicon (`arm64`) and Intel (`x64`) versions on separate macOS runners.
 
-Each build runs `npm test`, packages the app, runs the packaged app integration tests, and verifies the app signature. Successful builds upload `keycraft-macos-arm64` and `keycraft-macos-x64` artifacts, each containing a ZIP and SHA-256 checksum. Download them from the workflow run's **Artifacts** section within 14 days. Test screenshots are retained for 7 days, including screenshots available from failed runs.
+Each build runs `npm test`, packages the app, runs the packaged app integration tests, and verifies the app signature. Successful builds upload `keycraft-macos-arm64` and `keycraft-macos-x64` artifacts, each containing a versioned ZIP, DMG, and SHA-256 checksums. Download them from the workflow run's **Artifacts** section within 14 days. Test screenshots are retained for 7 days, including screenshots available from failed runs.
 
-The ZIP preserves the app's executable permissions and framework symlinks and includes its license files. CI builds use the same ad-hoc signing as the packaging script and require no signing secrets. The workflow does not publish GitHub Releases.
+The archives preserve the app's executable permissions and framework symlinks and include its license files. CI builds use the same ad-hoc signing as the packaging script and require no signing secrets. To archive an already built and tested local app, run `bash scripts/archive-macos.sh`.
+
+## Publish a release candidate
+
+Commit your changes, then run this from the branch you want to release:
+
+```sh
+make release
+```
+
+This changes `0.4.0` to `0.4.1-rc.1`, updates `desktop/package.json` and both version fields in its lockfile, commits the change, creates an annotated `v0.4.1-rc.1` tag, and atomically pushes the current branch and that tag to `origin`. Make, Node.js, and Git are the only local requirements for this command. The private UI package has its own version; the desktop package determines the shipped app version.
+
+For another candidate of the same patch, use:
+
+```sh
+make rc  # 0.4.1-rc.1 → 0.4.1-rc.2
+```
+
+`make release` always starts the next patch at `rc.1`; `make rc` increments the current candidate. Add `PUSH=0` to prepare only the local commit and tag, for example `make rc PUSH=0`; the command prints the exact push command. If a push fails, retry that printed command after resolving the Git error. The helper requires a clean working tree and never creates a stable version. Run `make` or `make help` to see the available commands.
+
+Pushing a `vX.Y.Z-rc.N` tag triggers the full build. The workflow validates that the tag and desktop versions match, waits for both architectures to pass, verifies all four archives against their checksums, and uploads all eight files before publishing a **Pre-release** on [GitHub Releases](https://github.com/laixintao/keycraft/releases). These downloads remain available beyond the Actions artifact retention period. It uses the built-in `GITHUB_TOKEN` with `contents: write` only in the publishing job; no personal access token is required. Branch pushes, pull requests, manual runs, and stable tags do not publish releases.
+
+If publication fails after creating a draft, rerun the failed job to finish the upload. Published releases are never overwritten; bump `rc` to publish a new candidate. Release candidates are never marked **Latest**.
 
 ## Development
 

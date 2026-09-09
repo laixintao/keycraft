@@ -1,7 +1,9 @@
-name: Test and build
+name: Test, build and release
 
 on:
   push:
+    branches: ['main']
+    tags: ['v*.*.*-rc.*']
   pull_request:
   workflow_dispatch:
 
@@ -10,7 +12,7 @@ permissions:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.ref_type != 'tag' }}
 
 jobs:
   macos:
@@ -46,6 +48,13 @@ jobs:
       - name: Install Yarn Classic
         run: npm install --global yarn@1.22.22 --force
 
+      - name: Validate app version
+        run: node scripts/bumpversion.cjs --check
+
+      - name: Validate release tag
+        if: ${{ github.ref_type == 'tag' }}
+        run: node scripts/bumpversion.cjs --check "$GITHUB_REF_NAME"
+
       - name: Install UI dependencies
         run: yarn --cwd keycraft install --frozen-lockfile --ignore-optional --ignore-scripts --non-interactive
 
@@ -69,20 +78,17 @@ jobs:
       - name: Verify app signature
         run: codesign --verify --deep --strict "dist/desktop/keycraft-darwin-${BUILD_ARCH}/keycraft.app"
 
-      - name: Archive app and create checksum
-        working-directory: dist/desktop
-        run: |
-          # Archive before uploading to preserve executable bits and framework symlinks.
-          ditto -c -k --sequesterRsrc --keepParent "keycraft-darwin-${BUILD_ARCH}" "keycraft-macos-${BUILD_ARCH}.zip"
-          shasum -a 256 "keycraft-macos-${BUILD_ARCH}.zip" > "keycraft-macos-${BUILD_ARCH}.zip.sha256"
+      - name: Create ZIP, DMG and checksums from tested app
+        run: bash scripts/archive-macos.sh
 
       - name: Upload app
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: keycraft-macos-${{ matrix.arch }}
           path: |
-            dist/desktop/keycraft-macos-${{ matrix.arch }}.zip
-            dist/desktop/keycraft-macos-${{ matrix.arch }}.zip.sha256
+            dist/desktop/keycraft-*-macos-${{ matrix.arch }}.zip
+            dist/desktop/keycraft-*-macos-${{ matrix.arch }}.dmg
+            dist/desktop/keycraft-*-macos-${{ matrix.arch }}.*.sha256
           if-no-files-found: error
           compression-level: 0
           retention-days: 14
@@ -95,3 +101,35 @@ jobs:
           path: dist/desktop/screenshots/
           if-no-files-found: ignore
           retention-days: 7
+
+  release:
+    name: Publish release candidate
+    if: ${{ github.event_name == 'push' && github.ref_type == 'tag' }}
+    needs: macos
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Check out release source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+
+      - name: Download tested apps
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: keycraft-macos-*
+          merge-multiple: true
+          path: release-assets
+
+      - name: Verify downloads and publish prerelease
+        run: bash scripts/publish-release.sh

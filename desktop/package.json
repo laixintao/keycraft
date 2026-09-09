@@ -1,7 +1,7 @@
 {
   "name": "keycraft",
   "productName": "keycraft",
-  "version": "0.4.0",
+  "version": "0.4.1-rc.1",
   "description": "Review and explore Vim and tmux shortcuts",
   "author": "laixintao",
   "license": "BSD-3-Clause",
