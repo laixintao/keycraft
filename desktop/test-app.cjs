@@ -141,8 +141,16 @@ const path = require("node:path");
     await page.keyboard.press("Escape");
     await dialog.waitFor({ state: "hidden" });
     assert.ok(await page.getByRole("button", { name: "Paste tmux bindings" }).evaluate((element) => element === document.activeElement), "Closing import returns keyboard focus to its trigger");
-    await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].setSize(1280, 900));
-    await page.waitForFunction(() => innerWidth === 1280 && innerHeight === 900);
+    // macOS can constrain the requested size to the runner's available screen area.
+    // Wait for the renderer to match the native window's actual content size.
+    const workspaceSize = await app.evaluate(({ BrowserWindow }) => {
+      const window = BrowserWindow.getAllWindows()[0];
+      window.setSize(1280, 900);
+      return window.getContentSize();
+    });
+    console.log(`Workspace viewport: ${workspaceSize.join("x")} (requested 1280x900)`);
+    await page.waitForFunction(([width, height]) => innerWidth === width && innerHeight === height, workspaceSize);
+    await assertWindowLayout(page);
     await list.evaluate((element) => { element.scrollTop = 0; });
     await page.screenshot({ path: path.join(artifacts, "workspace.png") });
 
