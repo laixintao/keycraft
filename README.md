@@ -13,7 +13,15 @@ A macOS app for reviewing and exploring Vim and tmux shortcuts.
 
 ## Use it
 
-Download a release candidate from [GitHub Releases](https://github.com/laixintao/keycraft/releases). Choose `macos-arm64` for Apple Silicon or `macos-x64` for Intel. Open the DMG and drag **keycraft.app** into **Applications**, or extract the ZIP and copy the app there. These builds are ad-hoc signed and not Apple-notarized; macOS Gatekeeper may block them.
+On macOS 12 Monterey or later, install with [Homebrew](https://brew.sh/):
+
+```sh
+brew install --cask laixintao/tap/keycraft
+```
+
+The [Homebrew tap](https://github.com/laixintao/homebrew-tap) distributes macOS release candidates and automatically selects the Apple Silicon or Intel build. To update, run `brew update` followed by `brew upgrade --cask laixintao/tap/keycraft`.
+
+You can also download a macOS release candidate from [GitHub Releases](https://github.com/laixintao/keycraft/releases). Choose `macos-arm64` for Apple Silicon or `macos-x64` for Intel. Open the DMG and drag **keycraft.app** into **Applications**, or extract the ZIP and copy the app there. These builds are ad-hoc signed and not Apple-notarized; macOS Gatekeeper may block them, including when installed through Homebrew.
 
 Open **keycraft.app** and click **Import from Vim**, **Import from tmux**, or **Import text or file**. Each import creates a new snapshot.
 
