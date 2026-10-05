@@ -4,7 +4,7 @@ const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 const { execFileSync, spawnSync } = require("node:child_process");
-const { nextVersion, validateVersion } = require("../bumpversion.cjs");
+const { nextVersion, validateVersion, requestedVersion } = require("../bumpversion.cjs");
 
 function fixture(t, version = "0.4.0") {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "keycraft-release-"));
@@ -12,6 +12,7 @@ function fixture(t, version = "0.4.0") {
   fs.mkdirSync(path.join(root, "desktop"));
   fs.mkdirSync(path.join(root, "scripts"));
   fs.copyFileSync(path.join(__dirname, "../bumpversion.cjs"), path.join(root, "scripts/bumpversion.cjs"));
+  fs.copyFileSync(path.join(__dirname, "../../Makefile"), path.join(root, "Makefile"));
   const write = (file, value) => fs.writeFileSync(path.join(root, file), JSON.stringify(value, null, 2) + "\n");
   write("desktop/package.json", { name: "keycraft", version, private: true });
   write("desktop/package-lock.json", {
@@ -20,15 +21,21 @@ function fixture(t, version = "0.4.0") {
   });
   // Keep tests independent of the user's signing, hooks, and Git identity.
   const env = { ...process.env, GIT_CONFIG_GLOBAL: "/dev/null", GIT_CONFIG_NOSYSTEM: "1" };
-  for (const key of ["GIT_DIR", "GIT_WORK_TREE", "GIT_INDEX_FILE"]) delete env[key];
+  for (const key of ["GIT_DIR", "GIT_WORK_TREE", "GIT_INDEX_FILE", "VERSION", "PUSH", "MAKEFLAGS", "MAKEOVERRIDES"]) delete env[key];
   const git = (...args) => execFileSync("git", args, { cwd: root, env, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
-  git("init", "-b", "test-release");
+  git("init", "-b", "main");
   git("config", "user.name", "Release test");
   git("config", "user.email", "release@example.invalid");
   git("add", ".");
   git("commit", "-m", "Initial fixture");
   const run = (...args) => spawnSync(process.execPath, ["scripts/bumpversion.cjs", ...args], { cwd: root, env, encoding: "utf8" });
-  return { root, write, git, run };
+  const make = (...args) => spawnSync("make", args, { cwd: root, env, encoding: "utf8" });
+  const remote = fs.mkdtempSync(path.join(os.tmpdir(), "keycraft-remote-"));
+  t.after(() => fs.rmSync(remote, { recursive: true, force: true }));
+  git("init", "--bare", "--initial-branch=main", remote);
+  git("remote", "add", "origin", remote);
+  git("push", "origin", "main");
+  return { root, write, git, run, make, remote };
 }
 
 test("patch starts a candidate and rc advances only an existing candidate", () => {
@@ -53,7 +60,8 @@ test("bump creates a clean commit and annotated tag with synchronized app metada
   assert.equal(git("rev-parse", "v0.4.1-rc.1^{}"), git("rev-parse", "HEAD"));
   assert.equal(git("status", "--porcelain"), "");
   assert.equal(validateVersion(root).lock.packages["node_modules/example"].version, "1.0.0");
-  assert.match(result.stdout, /git push --atomic origin HEAD:refs\/heads\/test-release refs\/tags\/v0\.4\.1-rc\.1/);
+  assert.match(result.stdout, /git push --atomic origin HEAD:refs\/heads\/main refs\/tags\/v0\.4\.1-rc\.1/);
+  git("commit", "--allow-empty", "-m", "Fix candidate");
   assert.equal(run("rc").status, 0);
   assert.equal(validateVersion(root, "v0.4.1-rc.2").version, "0.4.1-rc.2");
 });
@@ -86,18 +94,74 @@ test("release validation rejects stable tags, tag mismatches, and either stale l
   }
 });
 
-test("--push publishes only the current branch and new tag to a local bare remote", (t) => {
-  const { root, git, run } = fixture(t);
-  const remote = fs.mkdtempSync(path.join(os.tmpdir(), "keycraft-remote-"));
-  t.after(() => fs.rmSync(remote, { recursive: true, force: true }));
-  git("init", "--bare", remote);
-  git("remote", "add", "origin", remote);
+test("plain make release publishes only main and the new tag to a local bare remote", (t) => {
+  const { root, git, make } = fixture(t);
   git("tag", "unrelated-local-tag");
-  const result = run("patch", "--push");
+  const result = make("release");
   assert.equal(result.status, 0, result.stderr);
   const refs = git("ls-remote", "origin");
-  assert.match(refs, /refs\/heads\/test-release/);
+  assert.match(refs, /refs\/heads\/main/);
   assert.match(refs, /refs\/tags\/v0\.4\.1-rc\.1/);
   assert.ok(!refs.includes("unrelated-local-tag"));
   assert.equal(validateVersion(root).version, "0.4.1-rc.1");
+  assert.equal(git("rev-parse", "HEAD"), git("ls-remote", "origin", "refs/tags/v0.4.1-rc.1^{}").split(/\s/)[0]);
+  assert.match(make("release").stderr, /no new commits/);
+});
+
+test("explicit release versions must be newer RCs", () => {
+  assert.equal(requestedVersion("0.4.1-rc.9", "patch", "0.4.1-rc.10"), "0.4.1-rc.10");
+  for (const value of ["0.4.1-rc.9", "0.4.1-rc.8", "0.4.0-rc.1", "0.5.0", "01.2.3-rc.1"]) {
+    assert.throws(() => requestedVersion("0.4.1-rc.9", "patch", value));
+  }
+  assert.throws(() => requestedVersion("0.4.1", "patch", "0.4.1-rc.99"));
+});
+
+test("make release VERSION selects a newer RC without manual manifest edits", (t) => {
+  const { root, make } = fixture(t);
+  const result = make("release", "VERSION=0.5.0-rc.1");
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(validateVersion(root).version, "0.5.0-rc.1");
+});
+
+test("wrong branch and existing remote tag fail before editing", (t) => {
+  const { git, make } = fixture(t);
+  const before = git("rev-parse", "HEAD");
+  git("switch", "-c", "feature");
+  assert.match(make("release").stderr, /main branch/);
+  git("switch", "main");
+  git("tag", "v0.4.1-rc.1");
+  git("push", "origin", "v0.4.1-rc.1");
+  git("tag", "-d", "v0.4.1-rc.1");
+  assert.match(make("release").stderr, /already exists on origin/);
+  assert.equal(git("rev-parse", "HEAD"), before);
+  assert.equal(git("status", "--porcelain"), "");
+});
+
+test("remote main ahead fails before editing", (t) => {
+  const { root, remote, git, make } = fixture(t);
+  const before = git("rev-parse", "HEAD");
+  const other = fs.mkdtempSync(path.join(os.tmpdir(), "keycraft-other-"));
+  t.after(() => fs.rmSync(other, { recursive: true, force: true }));
+  git("clone", remote, other);
+  git("-C", other, "-c", "user.name=Other", "-c", "user.email=other@example.invalid", "commit", "--allow-empty", "-m", "Remote work");
+  git("-C", other, "push");
+  assert.match(make("release").stderr, /Remote main has changes/);
+  assert.equal(git("rev-parse", "HEAD"), before);
+  assert.equal(validateVersion(root).version, "0.4.0");
+  assert.equal(git("status", "--porcelain"), "");
+});
+
+test("failed atomic push keeps a retryable release without changing the remote", (t) => {
+  const { remote, git, make } = fixture(t);
+  const before = git("rev-parse", "HEAD");
+  const hook = path.join(remote, "hooks/pre-receive");
+  fs.writeFileSync(hook, "#!/bin/sh\nexit 1\n", { mode: 0o755 });
+  const result = make("release");
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /git push --atomic origin HEAD:refs\/heads\/main refs\/tags\/v0\.4\.1-rc\.1/);
+  assert.equal(git("ls-remote", "origin", "refs/heads/main").split(/\s/)[0], before);
+  assert.equal(git("ls-remote", "origin", "refs/tags/v0.4.1-rc.1"), "");
+  fs.unlinkSync(hook);
+  git("push", "--atomic", "origin", "HEAD:refs/heads/main", "refs/tags/v0.4.1-rc.1");
+  assert.equal(git("ls-remote", "origin", "refs/heads/main").split(/\s/)[0], git("rev-parse", "HEAD"));
 });
