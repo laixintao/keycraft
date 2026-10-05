@@ -21,7 +21,7 @@ brew install --cask laixintao/tap/keycraft
 
 The [Homebrew tap](https://github.com/laixintao/homebrew-tap) distributes macOS release candidates and automatically selects the Apple Silicon or Intel build. To update, run `brew update` followed by `brew upgrade --cask laixintao/tap/keycraft`.
 
-You can also download a macOS release candidate from [GitHub Releases](https://github.com/laixintao/keycraft/releases). Choose `macos-arm64` for Apple Silicon or `macos-x64` for Intel. Open the DMG and drag **keycraft.app** into **Applications**, or extract the ZIP and copy the app there. These builds are ad-hoc signed and not Apple-notarized; macOS Gatekeeper may block them, including when installed through Homebrew.
+You can also download a macOS release candidate from [GitHub Releases](https://github.com/laixintao/keycraft/releases). Choose `macos-arm64` for Apple Silicon or `macos-x86_64` for Intel. Open the DMG and drag **keycraft.app** into **Applications**, or extract the ZIP and copy the app there. These builds are ad-hoc signed and not Apple-notarized; macOS Gatekeeper may block them, including when installed through Homebrew.
 
 Open **keycraft.app** and click **Import from Vim**, **Import from tmux**, or **Import text or file**. Each import creates a new snapshot.
 
@@ -69,7 +69,7 @@ To build a DMG installer after installing the dependencies above:
 make dmg
 ```
 
-This rebuilds the app and creates `dist/desktop/keycraft-macos-arm64.dmg` on Apple Silicon, or `keycraft-macos-x64.dmg` on Intel. The architecture follows the Node.js process, including when running under Rosetta. Open the DMG and drag **keycraft.app** into **Applications** to install it.
+This rebuilds the app and creates `dist/desktop/keycraft-macos-arm64.dmg` on Apple Silicon, or `keycraft-macos-x64.dmg` on Intel. This local convenience command retains its historical filename; verified release assets use the standard `Keycraft-<version>-macos-<architecture>` names described below. The architecture follows the Node.js process, including when running under Rosetta. Open the DMG and drag **keycraft.app** into **Applications** to install it.
 
 The script includes the app's license files, verifies the disk image, and cleans up temporary files. A previous DMG is replaced only after a successful build. You can also run `./scripts/build-dmg.sh` directly.
 
@@ -77,9 +77,9 @@ The packaging script currently uses an ad-hoc signature. Public distribution req
 
 ## Automated tests and builds
 
-The [Test, build and release workflow](.github/workflows/ci.yml) runs on pushes to `main`, RC tag pushes, and pull requests, and can be started manually from GitHub's **Actions** tab. Development branch pushes are tested through their pull requests to avoid duplicate builds; branches without a pull request can be tested with a manual run. It uses Node.js 24 and builds Apple Silicon (`arm64`) and Intel (`x64`) versions on separate macOS runners.
+The [CI workflow](.github/workflows/ci.yml) runs on pushes to `main` and pull requests, and can be started manually from GitHub's **Actions** tab. It calls the reusable [macOS build workflow](.github/workflows/build.yml), which is also used by releases. Development branch pushes are tested through their pull requests to avoid duplicate builds. It uses Node.js 24 and builds Apple Silicon (`arm64`) and Intel (`x86_64`) release packages on separate macOS runners; Electron internally calls the Intel build target `x64`.
 
-Each build runs `npm test`, packages the app, runs the packaged app integration tests, and verifies the app signature. Successful builds upload `keycraft-macos-arm64` and `keycraft-macos-x64` artifacts, each containing a versioned ZIP, DMG, and SHA-256 checksums. Download them from the workflow run's **Artifacts** section within 14 days. Test screenshots are retained for 7 days, including screenshots available from failed runs.
+Each build runs `npm test`, packages the app, runs the packaged app integration tests, and verifies the app signature. Successful builds upload `Keycraft-macos-arm64` and `Keycraft-macos-x86_64` artifacts, each containing a versioned ZIP, DMG, and internal SHA-256 checksums. Download them from the workflow run's **Artifacts** section within 14 days. Test screenshots are retained for 7 days, including screenshots available from failed runs.
 
 The archives preserve the app's executable permissions and framework symlinks and include its license files. CI builds use the same ad-hoc signing as the packaging script and require no signing secrets. To archive an already built and tested local app, run `bash scripts/archive-macos.sh`.
 
@@ -101,7 +101,7 @@ make rc  # 0.4.1-rc.1 → 0.4.1-rc.2
 
 `make release` always starts the next patch at `rc.1`; `make rc` increments the current candidate. Add `PUSH=0` to prepare only the local commit and tag, for example `make rc PUSH=0`; the command prints the exact push command. If a push fails, retry that printed command after resolving the Git error. The helper requires a clean working tree and never creates a stable version. Run `make` or `make help` to see the available commands.
 
-Pushing a `vX.Y.Z-rc.N` tag triggers the full build. The workflow validates that the tag and desktop versions match, waits for both architectures to pass, verifies all four archives against their checksums, and uploads all eight files before publishing a **Pre-release** on [GitHub Releases](https://github.com/laixintao/keycraft/releases). These downloads remain available beyond the Actions artifact retention period. It uses the built-in `GITHUB_TOKEN` with `contents: write` only in the publishing job; no personal access token is required. Branch pushes, pull requests, manual runs, and stable tags do not publish releases.
+Pushing a `vX.Y.Z-rc.N` tag triggers the dedicated [Release workflow](.github/workflows/release.yml). It validates that the tag and desktop versions match, reuses the same two-architecture build, verifies all four archives, writes one `SHA256SUMS` manifest, creates GitHub build-provenance attestations, and publishes a **Pre-release** on [GitHub Releases](https://github.com/laixintao/keycraft/releases). Release files follow `Keycraft-<version>-macos-{arm64,x86_64}.{dmg,zip}`. These downloads remain available beyond the Actions artifact retention period. The publishing job alone receives `contents: write`, `id-token: write`, and `attestations: write`; no personal access token is required. Stable tags do not publish releases.
 
 If publication fails after creating a draft, rerun the failed job to finish the upload. Published releases are never overwritten; bump `rc` to publish a new candidate. Release candidates are never marked **Latest**.
 
