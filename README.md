@@ -85,13 +85,17 @@ The archives preserve the app's executable permissions and framework symlinks an
 
 ## Publish a release candidate
 
-Commit your changes, then run this from the branch you want to release:
+Commit and merge your changes, then run this from a clean, up-to-date `main` branch:
 
 ```sh
 make release
 ```
 
-This changes `0.4.0` to `0.4.1-rc.1`, updates `desktop/package.json` and both version fields in its lockfile, commits the change, creates an annotated `v0.4.1-rc.1` tag, and atomically pushes the current branch and that tag to `origin`. Make, Node.js, and Git are the only local requirements for this command. The private UI package has its own version; the desktop package determines the shipped app version.
+This follows the shared [make release SOP](https://github.com/laixintao/homebrew-tap/blob/main/docs/RELEASE_STANDARD.md#maintainer-command): no manual version edits, commit, or tag are needed for the release itself. It changes `0.4.0` to `0.4.1-rc.1`, updates `desktop/package.json` and both version fields in its lockfile, commits the change, creates an annotated tag, and atomically pushes `main` and the tag to `origin`. Make, Node.js, and Git are the only local requirements. The private UI package has its own version; the desktop package determines the shipped app version.
+
+The command checks remote `main` and tag conflicts before editing files. It returns after pushing and prints the Actions URL; GitHub generates release notes and publishes after the full build succeeds. Homebrew then synchronizes through the tap's six-hour schedule or its manually triggered Update casks workflow.
+
+For a specific newer RC, use `make release VERSION=0.5.0-rc.1`. The existing RC channel is unchanged; a stable version is rejected.
 
 For another candidate of the same patch, use:
 
@@ -99,7 +103,7 @@ For another candidate of the same patch, use:
 make rc  # 0.4.1-rc.1 → 0.4.1-rc.2
 ```
 
-`make release` always starts the next patch at `rc.1`; `make rc` increments the current candidate. Add `PUSH=0` to prepare only the local commit and tag, for example `make rc PUSH=0`; the command prints the exact push command. If a push fails, retry that printed command after resolving the Git error. The helper requires a clean working tree and never creates a stable version. Run `make` or `make help` to see the available commands.
+With no `VERSION` override, `make release` starts the next patch at `rc.1`; `make rc` remains an optional shortcut to increment the current candidate. Add `PUSH=0` to prepare only the local commit and tag, for example `make rc PUSH=0`; the command prints the exact push command. If a push fails, retry that printed command after resolving the Git error; do not run `make release` again to retry the same version. The helper requires a clean `main` worktree and never creates a stable version. Run `make` or `make help` to see the available commands.
 
 Pushing a `vX.Y.Z-rc.N` tag triggers the dedicated [Release workflow](.github/workflows/release.yml). It validates that the tag and desktop versions match, reuses the same two-architecture build, verifies all four archives, writes one `SHA256SUMS` manifest, creates GitHub build-provenance attestations, and publishes a **Pre-release** on [GitHub Releases](https://github.com/laixintao/keycraft/releases). Release files follow `Keycraft-<version>-macos-{arm64,x86_64}.{dmg,zip}`. These downloads remain available beyond the Actions artifact retention period. The publishing job alone receives `contents: write`, `id-token: write`, and `attestations: write`; no personal access token is required. Stable tags do not publish releases.
 
