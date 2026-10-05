@@ -5,10 +5,15 @@ project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$project_root"
 version="$(node -p 'require("./desktop/package.json").version')"
 build_arch="$(node -p 'process.arch')"
+case "$build_arch" in
+  arm64) release_arch="arm64" ;;
+  x64) release_arch="x86_64" ;;
+  *) printf 'Unsupported macOS architecture: %s\n' "$build_arch" >&2; exit 1 ;;
+esac
 node scripts/bumpversion.cjs --check
 
 cd dist/desktop
-archive="keycraft-${version}-macos-${build_arch}"
+archive="Keycraft-${version}-macos-${release_arch}"
 app_dir="keycraft-darwin-${build_arch}"
 test -d "$app_dir/keycraft.app"
 app_version="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$app_dir/keycraft.app/Contents/Info.plist")"

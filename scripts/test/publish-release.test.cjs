@@ -17,9 +17,9 @@ function fixture(t) {
   fs.writeFileSync(path.join(root, "desktop/package.json"), JSON.stringify({ version }));
   fs.writeFileSync(path.join(root, "desktop/package-lock.json"), JSON.stringify({ version, packages: { "": { version } } }));
   const assets = [];
-  for (const arch of ["arm64", "x64"]) {
-    for (const extension of ["zip", "dmg"]) {
-      const file = `keycraft-${version}-macos-${arch}.${extension}`;
+  for (const arch of ["arm64", "x86_64"]) {
+    for (const extension of ["dmg", "zip"]) {
+      const file = `Keycraft-${version}-macos-${arch}.${extension}`;
       const content = `archive fixture: ${file}`;
       fs.writeFileSync(path.join(root, "release-assets", file), content);
       const digest = crypto.createHash("sha256").update(content).digest("hex");
@@ -48,7 +48,7 @@ if (args[1] === "upload" && process.env.RELEASE_TEST_FAIL_UPLOAD) process.exit(1
   return { root, assets, run, calls };
 }
 
-test("publishes an RC only after all eight assets are uploaded to a draft", (t) => {
+test("publishes an RC with four archives and one checksum manifest", (t) => {
   const { run, calls, assets } = fixture(t);
   const result = run();
   assert.equal(result.status, 0, result.stderr);
@@ -57,9 +57,23 @@ test("publishes an RC only after all eight assets are uploaded to a draft", (t) 
   for (const flag of ["--draft", "--prerelease", "--latest=false", "--verify-tag"]) assert.ok(commands[1].includes(flag));
   for (const file of assets) {
     assert.ok(commands[2].includes(`release-assets/${file}`));
-    assert.ok(commands[2].includes(`release-assets/${file}.sha256`));
+    assert.ok(!commands[2].includes(`release-assets/${file}.sha256`));
   }
+  assert.ok(commands[2].includes("release-assets/SHA256SUMS"));
   for (const flag of ["--draft=false", "--prerelease", "--latest=false"]) assert.ok(commands[3].includes(flag));
+});
+
+test("verify-only writes the combined manifest without GitHub operations", (t) => {
+  const { root, assets, calls } = fixture(t);
+  const result = spawnSync("bash", ["scripts/publish-release.sh", "--verify-only"], {
+    cwd: root, encoding: "utf8",
+    env: { ...process.env, PATH: `${root}/bin:${process.env.PATH}`, RELEASE_TAG: "v0.4.1-rc.1",
+      RELEASE_TEST_LOG: path.join(root, "gh-calls.jsonl"), RELEASE_TEST_STATE: "missing" },
+  });
+  assert.equal(result.status, 0, result.stderr);
+  assert.deepEqual(calls(), []);
+  const manifest = fs.readFileSync(path.join(root, "release-assets/SHA256SUMS"), "utf8");
+  for (const file of assets) assert.match(manifest, new RegExp(`${file.replaceAll(".", "\\.")}$`, "m"));
 });
 
 test("retries an existing RC draft without recreating it", (t) => {
